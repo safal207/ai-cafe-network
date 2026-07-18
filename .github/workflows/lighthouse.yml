@@ -53,6 +53,9 @@ jobs:
       - name: Build causal, spatial, and temporal analysis
         run: node scripts/analyze-lighthouse.mjs
 
+      - name: Normalize stable learning identities
+        run: node scripts/prepare-learning-input.mjs
+
       - name: Evaluate self-learning quality model
         run: node scripts/learn-lighthouse.mjs
 
