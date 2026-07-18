@@ -18,6 +18,15 @@ AI Café Network does not try to make cafés merely more expensive. It makes the
 
 The repository includes a responsive premium landing page built with **React, TypeScript, and Vite**.
 
+Current product features:
+
+- English and Turkish interface with remembered language preference;
+- a proprietary dark, gold, and cyan visual system;
+- original product-style cards rendered in TypeScript and CSS;
+- responsive layouts for desktop, tablet, and mobile;
+- a structured pilot application through GitHub Issues;
+- automatic deployment to GitHub Pages after merge to `main`.
+
 ```bash
 npm install
 npm run dev
