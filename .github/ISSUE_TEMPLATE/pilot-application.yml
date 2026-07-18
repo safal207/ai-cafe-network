@@ -1,0 +1,64 @@
+name: Café pilot application
+description: Apply to become one of the first AI Café Network design partners.
+title: "Pilot application: [Café name]"
+labels: ["pilot-application"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for your interest in the founding pilot. Please share public business information only. Do not post private phone numbers or personal data in this public issue.
+  - type: input
+    id: cafe
+    attributes:
+      label: Café name
+      placeholder: Example Café
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: City and neighborhood
+      placeholder: Alanya, Oba
+    validations:
+      required: true
+  - type: input
+    id: public-link
+    attributes:
+      label: Public website or social profile
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: capacity
+    attributes:
+      label: Approximate seating capacity
+      options:
+        - Under 20
+        - 20–50
+        - 51–100
+        - More than 100
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why would this pilot be valuable for your café?
+      placeholder: Tell us about your customers, goals, and interest in AI, events, or community-building.
+    validations:
+      required: true
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Pilot readiness
+      options:
+        - label: We can host small workshops or community events.
+        - label: We have reliable Wi-Fi for guests.
+        - label: We are open to measuring pilot results.
+  - type: input
+    id: email
+    attributes:
+      label: Public business email
+      description: Use a business email that you are comfortable publishing in this issue.
+      placeholder: hello@example.com
+    validations:
+      required: true
