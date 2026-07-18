@@ -183,6 +183,14 @@ We are interested in conversations with:
 - tourism and local-development programs;
 - accelerators, sponsors, and early design partners.
 
+## External partnership status
+
+AI Café Network has expressed interest in future partnership opportunities with OpenAI and other AI providers. No official partnership, endorsement, sponsorship, certification, or branding permission currently exists.
+
+The founding café pilot does not require a café to purchase an OpenAI business plan or another enterprise AI subscription. The first validation focuses on community events, QR-based experiences, visitor engagement, and measurable venue outcomes.
+
+See [External partnership status](docs/PARTNERSHIP_STATUS.md) for the approved public wording and claim boundaries.
+
 ## Independence and brand notice
 
 AI Café Network is an independent concept-stage project. It is not currently affiliated with, endorsed by, or an official partner of OpenAI or any other AI provider.
