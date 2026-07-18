@@ -1,0 +1,17 @@
+# Local environment files
+.env
+.env.*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Common build and dependency folders
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+*.pyc
