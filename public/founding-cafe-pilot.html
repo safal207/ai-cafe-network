@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090c0e" />
+  <meta name="description" content="A bilingual 30-day founding café pilot proposal from AI Café Network." />
+  <title>Founding Café Pilot Proposal — AI Café Network</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #080b0e;
+      --panel: #101920;
+      --panel-2: #13242c;
+      --gold: #e7b55b;
+      --gold-light: #f6d596;
+      --cyan: #4ed9dd;
+      --white: #f7f3eb;
+      --muted: #aab2b5;
+      --line: rgba(255,255,255,.12);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { background: #050709; }
+    body { margin: 0; color: var(--white); background: radial-gradient(circle at 80% 0%, rgba(78,217,221,.12), transparent 28%), #050709; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .toolbar { position: sticky; top: 0; z-index: 20; display: flex; justify-content: center; gap: 10px; padding: 12px; background: rgba(5,7,9,.9); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
+    .toolbar button, .toolbar a { min-height: 40px; padding: 0 15px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 9px; color: var(--white); background: rgba(255,255,255,.04); cursor: pointer; font-weight: 750; }
+    .toolbar button.active, .toolbar .primary { color: #16110a; border-color: transparent; background: linear-gradient(135deg, var(--gold-light), var(--gold)); }
+    .sheet { width: min(210mm, calc(100% - 28px)); min-height: 297mm; margin: 24px auto 48px; padding: 14mm 14mm 12mm; position: relative; overflow: hidden; background: radial-gradient(circle at 95% 0%, rgba(78,217,221,.12), transparent 25%), linear-gradient(145deg, #0a0f13, #101b22 68%, #0b1115); border: 1px solid rgba(231,181,91,.24); box-shadow: 0 34px 90px rgba(0,0,0,.5); }
+    .sheet::before { content: ''; position: absolute; width: 240px; height: 240px; top: -130px; right: -90px; border: 1px solid rgba(231,181,91,.28); border-radius: 50%; box-shadow: 0 0 0 32px rgba(231,181,91,.025), 0 0 0 68px rgba(78,217,221,.025); }
+    .sheet[hidden] { display: none; }
+    .topline { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; letter-spacing: .08em; }
+    .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid rgba(231,181,91,.58); border-radius: 50%; color: var(--gold); font-family: Georgia, serif; font-size: 20px; }
+    .brand strong, .brand small { display: block; line-height: 1; }
+    .brand strong { font-family: Georgia, serif; font-size: 16px; }
+    .brand small { margin-top: 5px; color: var(--muted); font-size: 8px; letter-spacing: .25em; }
+    .pilot-badge { padding: 8px 11px; border: 1px solid rgba(78,217,221,.32); border-radius: 999px; color: var(--cyan); font-size: 9px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .hero { position: relative; display: grid; grid-template-columns: 1.25fr .75fr; gap: 22px; align-items: end; margin-top: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+    .eyebrow { display: flex; align-items: center; gap: 8px; color: var(--gold-light); font-size: 8px; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 27px; height: 1px; background: var(--cyan); }
+    h1 { margin: 9px 0 10px; max-width: 520px; font-family: Georgia, "Times New Roman", serif; font-size: 37px; line-height: .98; font-weight: 500; letter-spacing: -.035em; }
+    h1 em { color: var(--gold); font-style: normal; }
+    .lead { margin: 0; max-width: 540px; color: #c7cdcf; font-size: 12px; line-height: 1.55; }
+    .hero-visual { min-height: 128px; position: relative; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 14px; background: radial-gradient(circle, rgba(78,217,221,.16), transparent 54%), rgba(255,255,255,.025); overflow: hidden; }
+    .core { width: 56px; height: 56px; display: grid; place-items: center; border: 1px solid rgba(231,181,91,.55); border-radius: 50%; color: var(--gold-light); font-family: Georgia, serif; font-size: 20px; box-shadow: 0 0 34px rgba(78,217,221,.16); }
+    .node { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+    .node:nth-child(2) { left: 16%; top: 25%; }
+    .node:nth-child(3) { right: 17%; top: 22%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+    .node:nth-child(4) { left: 20%; bottom: 20%; background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+    .node:nth-child(5) { right: 15%; bottom: 24%; }
+    .line { position: absolute; width: 38%; height: 1px; background: linear-gradient(90deg, transparent, rgba(78,217,221,.52), transparent); transform-origin: center; }
+    .line.a { transform: rotate(28deg); }
+    .line.b { transform: rotate(-30deg); }
+    .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-top: 13px; }
+    .promise { min-height: 78px; padding: 11px; border: 1px solid var(--line); border-radius: 11px; background: linear-gradient(145deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); }
+    .promise span { color: var(--gold); font-size: 8px; font-weight: 850; letter-spacing: .12em; }
+    .promise h3 { margin: 7px 0 4px; font-family: Georgia, serif; font-size: 15px; font-weight: 500; }
+    .promise p { margin: 0; color: var(--muted); font-size: 8.7px; line-height: 1.45; }
+    .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+    .panel { padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.025); }
+    .panel h2 { margin: 0 0 8px; color: var(--gold-light); font-family: Georgia, serif; font-size: 16px; font-weight: 500; }
+    .list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+    .list li { display: grid; grid-template-columns: 14px 1fr; gap: 6px; align-items: start; color: #cbd0d1; font-size: 8.7px; line-height: 1.35; }
+    .list li::before { content: '✓'; color: var(--cyan); font-weight: 900; }
+    .timeline { margin-top: 12px; }
+    .timeline h2, .metrics h2 { margin: 0 0 8px; font-family: Georgia, serif; font-size: 17px; font-weight: 500; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .step { position: relative; padding: 10px; min-height: 84px; border-top: 1px solid rgba(231,181,91,.48); background: rgba(255,255,255,.02); }
+    .step b { color: var(--gold); font-size: 8px; letter-spacing: .12em; }
+    .step strong { display: block; margin: 5px 0 4px; font-family: Georgia, serif; font-size: 13px; font-weight: 500; }
+    .step p { margin: 0; color: var(--muted); font-size: 8px; line-height: 1.35; }
+    .bottom-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 12px; margin-top: 12px; }
+    .metrics-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+    .metric { padding: 10px 8px; border: 1px solid var(--line); border-radius: 9px; background: rgba(255,255,255,.025); }
+    .metric strong { display: block; color: var(--cyan); font-family: Georgia, serif; font-size: 18px; font-weight: 500; }
+    .metric span { color: var(--muted); font-size: 7.7px; line-height: 1.3; text-transform: uppercase; letter-spacing: .06em; }
+    .offer { padding: 13px; border: 1px solid rgba(231,181,91,.34); border-radius: 12px; background: linear-gradient(145deg, rgba(231,181,91,.10), rgba(78,217,221,.05)); }
+    .offer small { color: var(--gold-light); font-size: 8px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    .offer h2 { margin: 6px 0 6px; font-family: Georgia, serif; font-size: 17px; font-weight: 500; }
+    .offer p { margin: 0; color: #c9cecf; font-size: 8.5px; line-height: 1.4; }
+    .cta { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 12px; padding-top: 11px; border-top: 1px solid var(--line); }
+    .cta-copy strong { display: block; font-family: Georgia, serif; font-size: 17px; font-weight: 500; }
+    .cta-copy span { color: var(--muted); font-size: 8.5px; }
+    .cta-button { padding: 11px 15px; color: #16110a; border-radius: 8px; background: linear-gradient(135deg, var(--gold-light), var(--gold)); font-size: 9px; font-weight: 900; letter-spacing: .04em; white-space: nowrap; }
+    .footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 9px; color: #798387; font-size: 6.8px; line-height: 1.35; }
+    .footer span:last-child { text-align: right; max-width: 48%; }
+    @media (max-width: 720px) {
+      .sheet { min-height: auto; padding: 24px 18px; }
+      .hero, .main-grid, .bottom-grid { grid-template-columns: 1fr; }
+      .promise-grid, .steps { grid-template-columns: 1fr 1fr; }
+      h1 { font-size: 39px; }
+      .cta { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 460px) {
+      .promise-grid, .steps, .metrics-row { grid-template-columns: 1fr; }
+      .toolbar { flex-wrap: wrap; }
+    }
+    @page { size: A4; margin: 0; }
+    @media print {
+      html, body { background: #fff; }
+      .toolbar { display: none !important; }
+      .sheet { width: 210mm; height: 297mm; min-height: 297mm; margin: 0; padding: 12mm 13mm 10mm; border: 0; box-shadow: none; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .sheet[hidden] { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar" aria-label="Proposal controls">
+    <button id="enButton" class="active" type="button">EN</button>
+    <button id="trButton" type="button">TR</button>
+    <button type="button" onclick="window.print()">Print / Save PDF</button>
+    <a class="primary" href="https://github.com/safal207/ai-cafe-network/issues/new?template=pilot-application.yml">Apply for pilot</a>
+  </div>
+
+  <main>
+    <article class="sheet" id="enSheet" lang="en">
+      <div class="topline">
+        <div class="brand"><span class="brand-mark">AI</span><span><strong>AI CAFÉ</strong><small>NETWORK</small></span></div>
+        <div class="pilot-badge">30-day founding pilot · Alanya & Antalya</div>
+      </div>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Premium technology for everyday places</div>
+          <h1>Turn your café into a <em>premium AI destination.</em></h1>
+          <p class="lead">We add a practical AI, community, and event layer to the café you already operate — creating a stronger reason to visit, stay, return, and recommend.</p>
+        </div>
+        <div class="hero-visual" aria-hidden="true"><span class="line a"></span><span class="line b"></span><span class="core">AI</span><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i></div>
+      </section>
+
+      <section class="promise-grid">
+        <article class="promise"><span>01 · POSITIONING</span><h3>New status</h3><p>Become one of the first recognisable AI-friendly venues in the region.</p></article>
+        <article class="promise"><span>02 · TRAFFIC</span><h3>New reasons to visit</h3><p>Activate quieter hours through workshops, meetups, and guided experiences.</p></article>
+        <article class="promise"><span>03 · VALUE</span><h3>Measurable learning</h3><p>Track participation, QR activity, repeat visits, feedback, and commercial signals.</p></article>
+      </section>
+
+      <section class="main-grid">
+        <article class="panel"><h2>What AI Café Network provides</h2><ul class="list"><li>Premium AI-friendly positioning and launch concept</li><li>One practical public AI event or workshop</li><li>QR onboarding and guided guest use cases</li><li>Event copy, digital promotional materials, and host playbook</li><li>Simple measurement dashboard and final pilot report</li><li>Permission-based photography and a public case study</li></ul></article>
+        <article class="panel"><h2>What the café provides</h2><ul class="list"><li>A named owner or manager as the pilot contact</li><li>Reliable guest Wi-Fi and a suitable event area</li><li>Permission for temporary QR and pilot materials</li><li>Normal café service during the event</li><li>Basic baseline and pilot data where available</li><li>Honest feedback and one decision meeting after 30 days</li></ul></article>
+      </section>
+
+      <section class="timeline"><h2>The first 30 days</h2><div class="steps"><article class="step"><b>WEEK 1</b><strong>Design</strong><p>Owner interview, baseline, audience, event theme, and launch plan.</p></article><article class="step"><b>WEEK 2</b><strong>Launch</strong><p>QR experience, promotion, staff briefing, and first public event.</p></article><article class="step"><b>WEEK 3</b><strong>Activate</strong><p>Follow-up content, guest feedback, and a second community touchpoint.</p></article><article class="step"><b>WEEK 4</b><strong>Measure</strong><p>Results review, owner feedback, case study, and continuation decision.</p></article></div></section>
+
+      <section class="bottom-grid">
+        <div class="metrics"><h2>What we measure</h2><div class="metrics-row"><div class="metric"><strong>Reach</strong><span>Registrations, attendance, QR starts</span></div><div class="metric"><strong>Return</strong><span>Repeat visitors and engagement</span></div><div class="metric"><strong>Value</strong><span>Orders, leads, feedback, willingness to continue</span></div></div></div>
+        <aside class="offer"><small>Founding offer</small><h2>No programme fee for the initial validation.</h2><p>Selected founding cafés participate in the first 30-day pilot without a programme fee. The café continues its normal operating costs and provides the space, Wi-Fi, service, and responsible contact person.</p></aside>
+      </section>
+
+      <section class="cta"><div class="cta-copy"><strong>Same café. New status. Bigger future.</strong><span>Start with one venue, one real event, and evidence we can trust.</span></div><a class="cta-button" href="https://github.com/safal207/ai-cafe-network/issues/new?template=pilot-application.yml">APPLY TO BECOME A FOUNDING CAFÉ →</a></section>
+      <footer class="footer"><span>ai-cafe-network · Alanya & Antalya, Türkiye · https://safal207.github.io/ai-cafe-network/</span><span>Independent concept-stage project. Not affiliated with or endorsed by OpenAI or another AI provider.</span></footer>
+    </article>
+
+    <article class="sheet" id="trSheet" lang="tr" hidden>
+      <div class="topline">
+        <div class="brand"><span class="brand-mark">AI</span><span><strong>AI CAFÉ</strong><small>NETWORK</small></span></div>
+        <div class="pilot-badge">30 günlük kurucu pilot · Alanya & Antalya</div>
+      </div>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Günlük mekânlar için premium teknoloji</div>
+          <h1>Kafenizi <em>premium bir AI destinasyonuna</em> dönüştürün.</h1>
+          <p class="lead">Mevcut kafenize pratik bir AI, topluluk ve etkinlik katmanı ekliyoruz — ziyaret etmek, daha uzun kalmak, tekrar gelmek ve tavsiye etmek için daha güçlü bir neden yaratıyoruz.</p>
+        </div>
+        <div class="hero-visual" aria-hidden="true"><span class="line a"></span><span class="line b"></span><span class="core">AI</span><i class="node"></i><i class="node"></i><i class="node"></i><i class="node"></i></div>
+      </section>
+
+      <section class="promise-grid">
+        <article class="promise"><span>01 · KONUMLANDIRMA</span><h3>Yeni statü</h3><p>Bölgenin ilk tanınan AI dostu mekânlarından biri olun.</p></article>
+        <article class="promise"><span>02 · TRAFİK</span><h3>Yeni ziyaret nedenleri</h3><p>Daha sakin saatleri atölyeler, buluşmalar ve rehberli deneyimlerle canlandırın.</p></article>
+        <article class="promise"><span>03 · DEĞER</span><h3>Ölçülebilir öğrenme</h3><p>Katılımı, QR kullanımını, tekrar ziyaretleri, geri bildirimi ve ticari sinyalleri takip edin.</p></article>
+      </section>
+
+      <section class="main-grid">
+        <article class="panel"><h2>AI Café Network ne sağlar?</h2><ul class="list"><li>Premium AI dostu konumlandırma ve lansman konsepti</li><li>Bir pratik halka açık AI etkinliği veya atölyesi</li><li>QR onboarding ve rehberli misafir kullanım senaryoları</li><li>Etkinlik metinleri, dijital tanıtım materyalleri ve sunucu planı</li><li>Basit ölçüm paneli ve nihai pilot raporu</li><li>İzinli fotoğraf kullanımı ve kamuya açık vaka çalışması</li></ul></article>
+        <article class="panel"><h2>Kafe ne sağlar?</h2><ul class="list"><li>Pilot iletişimi için sorumlu işletme sahibi veya yönetici</li><li>Güvenilir misafir Wi-Fi bağlantısı ve uygun etkinlik alanı</li><li>Geçici QR ve pilot materyalleri için izin</li><li>Etkinlik sırasında normal kafe hizmeti</li><li>Mevcut olduğu ölçüde temel ve pilot verileri</li><li>30 gün sonunda açık geri bildirim ve karar toplantısı</li></ul></article>
+      </section>
+
+      <section class="timeline"><h2>İlk 30 gün</h2><div class="steps"><article class="step"><b>1. HAFTA</b><strong>Tasarım</strong><p>İşletme görüşmesi, başlangıç verisi, hedef kitle, etkinlik teması ve lansman planı.</p></article><article class="step"><b>2. HAFTA</b><strong>Lansman</strong><p>QR deneyimi, tanıtım, personel bilgilendirmesi ve ilk halka açık etkinlik.</p></article><article class="step"><b>3. HAFTA</b><strong>Aktivasyon</strong><p>Takip içeriği, misafir geri bildirimi ve ikinci topluluk teması.</p></article><article class="step"><b>4. HAFTA</b><strong>Ölçüm</strong><p>Sonuç analizi, işletme geri bildirimi, vaka çalışması ve devam kararı.</p></article></div></section>
+
+      <section class="bottom-grid">
+        <div class="metrics"><h2>Neleri ölçüyoruz?</h2><div class="metrics-row"><div class="metric"><strong>Erişim</strong><span>Kayıtlar, katılım, QR başlangıçları</span></div><div class="metric"><strong>Dönüş</strong><span>Tekrar ziyaret ve etkileşim</span></div><div class="metric"><strong>Değer</strong><span>Siparişler, bağlantılar, geri bildirim, devam isteği</span></div></div></div>
+        <aside class="offer"><small>Kurucu teklif</small><h2>İlk doğrulama için program ücreti yok.</h2><p>Seçilen kurucu kafeler ilk 30 günlük pilota program ücreti ödemeden katılır. Kafe normal işletme maliyetlerini sürdürür; alanı, Wi-Fi bağlantısını, hizmeti ve sorumlu iletişim kişisini sağlar.</p></aside>
+      </section>
+
+      <section class="cta"><div class="cta-copy"><strong>Aynı kafe. Yeni statü. Daha büyük gelecek.</strong><span>Bir mekân, bir gerçek etkinlik ve güvenebileceğimiz kanıtlarla başlayalım.</span></div><a class="cta-button" href="https://github.com/safal207/ai-cafe-network/issues/new?template=pilot-application.yml">KURUCU KAFE OLMAK İÇİN BAŞVUR →</a></section>
+      <footer class="footer"><span>ai-cafe-network · Alanya & Antalya, Türkiye · https://safal207.github.io/ai-cafe-network/</span><span>Bağımsız konsept aşaması projesidir. OpenAI veya başka bir AI sağlayıcısı ile bağlantılı ya da onlar tarafından onaylanmış değildir.</span></footer>
+    </article>
+  </main>
+
+  <script>
+    const enButton = document.getElementById('enButton');
+    const trButton = document.getElementById('trButton');
+    const enSheet = document.getElementById('enSheet');
+    const trSheet = document.getElementById('trSheet');
+
+    function setLanguage(language) {
+      const turkish = language === 'tr';
+      document.documentElement.lang = language;
+      enSheet.hidden = turkish;
+      trSheet.hidden = !turkish;
+      enButton.classList.toggle('active', !turkish);
+      trButton.classList.toggle('active', turkish);
+      localStorage.setItem('ai-cafe-proposal-language', language);
+    }
+
+    enButton.addEventListener('click', () => setLanguage('en'));
+    trButton.addEventListener('click', () => setLanguage('tr'));
+
+    const saved = localStorage.getItem('ai-cafe-proposal-language');
+    const preferred = saved || (navigator.language.toLowerCase().startsWith('tr') ? 'tr' : 'en');
+    setLanguage(preferred);
+  </script>
+</body>
+</html>
