@@ -1,0 +1,86 @@
+name: Founding Café Pilot Application
+description: Apply to join the first AI Café Network pilot in Alanya or Antalya.
+title: "Pilot application: [Café name / Kafe adı]"
+labels: ["pilot-application"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for your interest in the AI Café Network founding pilot. Please share public business information only. Do not post private phone numbers or sensitive personal data in this public issue.
+
+        AI Café Network kurucu pilotuna gösterdiğiniz ilgi için teşekkür ederiz. Lütfen yalnızca kamuya açık işletme bilgilerini paylaşın. Bu herkese açık kayıtta özel telefon numarası veya hassas kişisel veri paylaşmayın.
+
+        AI Café Network is an independent concept-stage project and does not currently claim affiliation with any AI provider.
+
+  - type: input
+    id: cafe
+    attributes:
+      label: Café name / Kafe adı
+      placeholder: Example Café
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: City and neighborhood / Şehir ve mahalle
+      placeholder: Alanya, Oba
+    validations:
+      required: true
+
+  - type: input
+    id: public-link
+    attributes:
+      label: Public website or social profile / Web sitesi veya sosyal medya
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: capacity
+    attributes:
+      label: Approximate seating capacity / Yaklaşık oturma kapasitesi
+      options:
+        - Under 20 / 20’den az
+        - 20–50
+        - 51–100
+        - More than 100 / 100’den fazla
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why would this pilot be valuable? / Bu pilot neden değerli olur?
+      placeholder: Tell us about your customers, goals, and interest in AI, events, or community-building. / Müşterilerinizi, hedeflerinizi ve AI, etkinlikler veya topluluk oluşturma ilginizi anlatın.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: interests
+    attributes:
+      label: Areas of interest / İlgi alanları
+      options:
+        - label: Premium AI-friendly positioning / Premium AI dostu konumlandırma
+        - label: Workshops and community events / Atölyeler ve topluluk etkinlikleri
+        - label: QR onboarding and guided AI use cases / QR onboarding ve rehberli AI senaryoları
+        - label: Staff AI training / Personel AI eğitimi
+        - label: Measuring visitor and commercial impact / Ziyaretçi ve ticari etkinin ölçülmesi
+
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Pilot readiness / Pilot hazırlığı
+      options:
+        - label: We can host small workshops or community events. / Küçük atölye veya topluluk etkinlikleri düzenleyebiliriz.
+        - label: We have reliable Wi-Fi for guests. / Misafirler için güvenilir Wi-Fi bağlantımız var.
+        - label: We are open to measuring pilot results. / Pilot sonuçlarını ölçmeye açığız.
+
+  - type: input
+    id: email
+    attributes:
+      label: Public business email / Kamuya açık işletme e-postası
+      description: Use an address you are comfortable publishing in this public issue. / Bu herkese açık kayıtta yayınlanmasını uygun gördüğünüz bir adres kullanın.
+      placeholder: hello@example.com
+    validations:
+      required: true
