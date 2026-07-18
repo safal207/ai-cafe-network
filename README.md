@@ -6,6 +6,32 @@ AI Café Network is an independent pilot platform for transforming cafés, cowor
 
 The project starts with a focused pilot in **Alanya and Antalya, Türkiye**.
 
+## Premium positioning
+
+AI Café Network does not try to make cafés merely more expensive. It makes them more valuable.
+
+> Premium is access to intelligence, useful technology, ambitious people, new skills, and meaningful opportunity.
+
+**Same café. New status. Bigger future.**
+
+## Landing page
+
+The repository includes a responsive premium landing page built with **React, TypeScript, and Vite**.
+
+```bash
+npm install
+npm run dev
+```
+
+Production validation:
+
+```bash
+npm run check
+npm run build
+```
+
+After changes are merged into `main`, the included GitHub Actions workflow can deploy the generated `dist` directory to GitHub Pages.
+
 ## The problem
 
 AI tools are available online, but many people still lack the environment, confidence, guidance, and local community needed to use them effectively.
