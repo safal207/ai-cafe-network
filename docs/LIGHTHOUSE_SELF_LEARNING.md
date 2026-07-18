@@ -15,6 +15,18 @@ Pull-request runs:
 
 This prevents experiments, regressions, and noisy PR runs from redefining normal.
 
+## Stable surface identity
+
+Lighthouse starts a local server on an ephemeral port. Full localhost URLs therefore cannot be used as persistent learning keys.
+
+Before learning, the workflow normalizes every result to a stable identity:
+
+```text
+device profile × route
+```
+
+The original URL is retained as `sourceUrl` in the evidence, while the statistical model uses the stable route identity. This allows samples from separate workflow runs to accumulate correctly.
+
 ## What the model remembers
 
 For each `route × profile × measure` surface it stores up to 20 accepted values for:
