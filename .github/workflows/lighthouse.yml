@@ -1,4 +1,4 @@
-name: Lighthouse causal analysis
+name: Lighthouse causal learning
 
 on:
   pull_request:
@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   lighthouse:
-    name: Audit pages and explain root causes
+    name: Audit, explain, and learn
     runs-on: ubuntu-latest
 
     steps:
@@ -36,7 +36,7 @@ jobs:
       - name: Install Lighthouse CI
         run: npm install --global @lhci/cli@0.15.x
 
-      - name: Restore latest main history
+      - name: Restore latest main history and learning model
         uses: actions/cache/restore@v4
         with:
           path: .lighthouse-history
@@ -53,6 +53,12 @@ jobs:
       - name: Build causal, spatial, and temporal analysis
         run: node scripts/analyze-lighthouse.mjs
 
+      - name: Normalize stable learning identities
+        run: node scripts/prepare-learning-input.mjs
+
+      - name: Evaluate self-learning quality model
+        run: node scripts/learn-lighthouse.mjs
+
       - name: Publish analysis to job summary
         if: always()
         run: |
@@ -60,14 +66,22 @@ jobs:
             cat .lighthouseci/analysis/summary.md >> "$GITHUB_STEP_SUMMARY"
           else
             echo "## Lighthouse causal analysis" >> "$GITHUB_STEP_SUMMARY"
-            echo "The analysis file was not generated. Inspect the earlier workflow steps." >> "$GITHUB_STEP_SUMMARY"
+            echo "The causal analysis file was not generated. Inspect the earlier workflow steps." >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Upload Lighthouse evidence
+          if [ -f .lighthouseci/analysis/learning-summary.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat .lighthouseci/analysis/learning-summary.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            printf '\n---\n\n## Self-learning Lighthouse model\n' >> "$GITHUB_STEP_SUMMARY"
+            echo "The learning report was not generated. Inspect the earlier workflow steps." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload Lighthouse evidence and model
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: lighthouse-causal-evidence-${{ github.run_id }}
+          name: lighthouse-learning-evidence-${{ github.run_id }}
           path: |
             .lighthouseci/mobile
             .lighthouseci/desktop
@@ -76,7 +90,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
 
-      - name: Save main history
+      - name: Save accepted main history and learning model
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/cache/save@v4
         with:
