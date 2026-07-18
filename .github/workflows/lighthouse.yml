@@ -1,4 +1,4 @@
-name: Lighthouse CI
+name: Lighthouse causal analysis
 
 on:
   pull_request:
@@ -9,9 +9,13 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: lighthouse-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lighthouse:
-    name: Audit production pages
+    name: Audit pages and explain root causes
     runs-on: ubuntu-latest
 
     steps:
@@ -32,14 +36,49 @@ jobs:
       - name: Install Lighthouse CI
         run: npm install --global @lhci/cli@0.15.x
 
-      - name: Run Lighthouse assertions
+      - name: Restore latest main history
+        uses: actions/cache/restore@v4
+        with:
+          path: .lighthouse-history
+          key: lighthouse-history-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            lighthouse-history-main-
+
+      - name: Audit mobile surfaces
         run: lhci autorun --config=./lighthouserc.json
 
-      - name: Upload Lighthouse reports
+      - name: Audit desktop surfaces
+        run: lhci autorun --config=./lighthouserc.desktop.json
+
+      - name: Build causal, spatial, and temporal analysis
+        run: node scripts/analyze-lighthouse.mjs
+
+      - name: Publish analysis to job summary
+        if: always()
+        run: |
+          if [ -f .lighthouseci/analysis/summary.md ]; then
+            cat .lighthouseci/analysis/summary.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "## Lighthouse causal analysis" >> "$GITHUB_STEP_SUMMARY"
+            echo "The analysis file was not generated. Inspect the earlier workflow steps." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload Lighthouse evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: lighthouse-reports
-          path: .lighthouseci/reports
-          if-no-files-found: ignore
-          retention-days: 14
+          name: lighthouse-causal-evidence-${{ github.run_id }}
+          path: |
+            .lighthouseci/mobile
+            .lighthouseci/desktop
+            .lighthouseci/analysis
+            .lighthouse-history
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Save main history
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/cache/save@v4
+        with:
+          path: .lighthouse-history
+          key: lighthouse-history-main-${{ github.run_id }}
