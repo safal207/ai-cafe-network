@@ -1,0 +1,32 @@
+name: Atom Master concept quality
+on:
+  pull_request:
+    paths:
+      - 'public/demos/atom-master/**'
+      - 'scripts/verify-atom-master.mjs'
+      - '.github/workflows/atom-master-quality.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/demos/atom-master/**'
+      - 'scripts/verify-atom-master.mjs'
+      - '.github/workflows/atom-master-quality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  atom-master-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate interactive menu logic
+        run: node scripts/verify-atom-master.mjs
+      - name: Check full site build
+        run: |
+          npm install --no-audit --no-fund
+          npm run build
