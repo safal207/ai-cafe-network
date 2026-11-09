@@ -1,0 +1,51 @@
+name: Import Atom Master original product images
+on:
+  push:
+    branches: [feat/atom-master-original-photo-pack]
+    paths:
+      - '.github/workflows/atom-master-photo-import.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-photo-pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch provided original concept artwork
+        env:
+          SOURCE_URL: 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/e3b5b9cf-622d-4c4e-98a9-cf43254bcc8c.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiMWRjZjQxZjExN2JmMWM1MyIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5NDM5NDA5N30.JPyFrGa9IiAbN1VeI-cUVNtvf7SAWbN3lTTKVXYhFyo'
+        run: |
+          curl --fail --location --silent --show-error --retry 2 "$SOURCE_URL" -o /tmp/atom-concept.png
+          test -s /tmp/atom-concept.png
+      - name: Crop and optimize twelve original product photographs
+        run: |
+          python -m pip -q install Pillow==11.3.0
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          image=Image.open('/tmp/atom-concept.png').convert('RGB')
+          assert image.size == (1448,1086), f'Unexpected source size: {image.size}'
+          out=Path('public/demos/atom-master/assets')
+          out.mkdir(parents=True,exist_ok=True)
+          for y in range(3):
+              for x in range(4):
+                  cell=image.crop((x*362,y*362,(x+1)*362,(y+1)*362))
+                  cell.save(out/f'atom-{y*4+x+1:02}.webp',format='WEBP',quality=72,method=6)
+          print('Generated 12 product photos:',[(p.name,p.stat().st_size) for p in sorted(out.glob('atom-*.webp'))])
+          PY
+      - name: Commit image pack to current feature branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/demos/atom-master/assets/
+          git diff --cached --quiet && exit 0
+          git commit -m "assets(atom): add 12 optimized original product photographs"
+          git push origin HEAD:feat/atom-master-original-photo-pack
