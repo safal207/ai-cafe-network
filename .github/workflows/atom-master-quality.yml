@@ -28,5 +28,5 @@ jobs:
         run: node scripts/verify-atom-master.mjs
       - name: Check full site build
         run: |
-          npm ci --no-audit --no-fund
+          npm install --no-audit --no-fund
           npm run build
