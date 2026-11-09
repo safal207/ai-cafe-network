@@ -34,10 +34,10 @@
 </style></head>
 <body><header class="shell top"><a class="logo" href="#" aria-label="Atom Master"><span class="logo-mark">✦</span><span><span class="sub">GAZİPAŞA</span>ATOM MASTER</span></a><div class="actions"><button class="pill" id="theme" aria-label="Toggle theme">☾</button><select class="select" id="lang" aria-label="Language"><option value="tr">TR</option><option value="ru">RU</option><option value="en">EN</option></select><button class="pill cart-trigger" id="cart-top">🛍 <span class="badge-count" id="cart-count">0</span></button></div></header>
 <main class="shell"><section class="hero"><div class="hero-copy"><span class="eyebrow">GAZİPAŞA · LEZZET DURAĞI</span><h1 id="hero-title">Enerjini<br>fulle!</h1><p id="hero-desc">Meyveler, çikolata, bol enerji. Her yudum ve her lokma bir kutlama.</p><button class="hero-btn" id="hero-cta">Lezzetleri keşfet ↓</button></div><div class="hero-visual"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=900&q=85&auto=format&fit=crop" alt="Strawberry milkshake concept photograph" fetchpriority="high"></div></section>
-<div class="hero-info"><span>✦ <b>30+</b> lezzet seçeneği</span><span>♡ <b>Favorilerini</b> kaydet</span><span>🛍 <b>Kasada</b> sipariş taslağı</span></div>
+<div class="hero-info"><span id="hero-info-1">✦ <b>38</b> lezzet</span><span id="hero-info-2">♡ Favorilerini kaydet</span><span id="hero-info-3">🛍 Kasada gösterilecek taslak</span></div>
 <div class="section-head" id="catalog"><div><span class="tag" id="tag">TADI KEŞFET</span><h2 id="catalog-title">Bugün ne içsek?</h2><p id="catalog-desc">Favorini bul, menünü oluştur.</p></div><div class="view-switch" role="group" aria-label="Layout"><button data-view="feed" class="active">▤</button><button data-view="grid">▦</button><button data-view="list">☷</button></div></div>
 <div class="moment-banner" id="moment-banner" aria-label="Daypart suggestions"><strong id="moment-heading">Günün tadı</strong><button class="chip active" data-moment="all">Tümü</button><button class="chip" data-moment="morning">☀ Sabah</button><button class="chip" data-moment="afternoon">◒ Öğle</button><button class="chip" data-moment="evening">☾ Akşam</button></div>
-<div class="search-wrap"><input id="search" type="search" class="search" placeholder="Lezzet ara..." aria-label="Menu search"><select id="sort" class="select"><option value="default">Önerilen</option><option value="asc">Fiyat ↑</option><option value="desc">Fiyat ↓</option></select><button class="pill" id="fav-filter" aria-pressed="false">♡</button></div>
+<div class="search-wrap"><input id="search" type="search" class="search" placeholder="Lezzet ara..." aria-label="Menu search"><select id="sort" class="select"><option value="default" id="sort-default">Önerilen</option><option value="asc" id="sort-asc">Fiyat ↑</option><option value="desc" id="sort-desc">Fiyat ↓</option></select><button class="pill" id="fav-filter" aria-pressed="false">♡</button></div>
 <div class="filters" id="filters" aria-label="Categories"></div><div class="grid feed" id="products" aria-live="polite"></div>
 <section class="promo"><div><span class="tag">BİRLİKTE DAHA GÜZEL</span><h2 id="combo-title">Tatlı + içecek = keyif</h2><p id="combo-desc">Bir waffle ve ferahlatıcı içecek seç. Fiyatlar seçtiğin ürünlerin toplamıdır.</p></div><button id="combo-btn" class="pill pink">Kombo oluştur +</button></section></main>
 <footer class="shell footer"><strong>ATOM MASTER · GAZİPAŞA</strong><p>Bağımsız tasarım konsepti · Resmî site değildir. Sipariş ve ödeme sistemi değildir. Fiyatlar, fotoğraflar, içerikler işletme onayına tabidir.</p><p>Independent design concept · Not an official site. No actual order or payment is submitted.</p><p><a href="https://www.atomstation.com.tr/lezzetler" target="_blank" rel="noopener noreferrer">Atom Station · genel marka ürün kataloğu</a> — tarif referansı. Gazipaşa şubesinin satış menüsü fotoğrafına göre hazırlanmıştır; fotoğraflar temsili ve resmi değildir.</p></footer><nav class="bottom-nav"><button id="nav-home"><b>⌂</b><span data-t="home">Ana sayfa</span></button><button id="nav-menu"><b>▦</b><span data-t="menu">Menü</span></button><button id="nav-favs"><b>♡</b><span data-t="favs">Favoriler</span></button><button id="nav-cart"><b>🛍</b><span data-t="cart">Sepet</span></button></nav>
@@ -108,7 +108,14 @@ if(a.includes('tahini'))result.push(x().sesame);
 if(a.includes('oreo')||a.includes('waffle'))result.push(x().gluten);
 return result;
 }
-function productImage(p,w=650){return pic(p[5],w)}
+const PHOTO_OVERRIDE={
+'Muzlu Süt':'photo-1712056407284-c1eda76e7bcd',
+'Bardak Waffle':'photo-1723437496824-a73ed350558b',
+"4'lü Churros":'photo-1729087012223-4c75e3b99edb',
+"6'lı Churros":'photo-1754400356123-0d021863f071',
+'Ice Latte':'photo-1777620817565-1f0802f12b3f'
+};
+function productImage(p,w=650){const source=PHOTO_OVERRIDE[p[0]];return source?'https://images.unsplash.com/'+source+'?w='+w+'&q=78&auto=format&fit=crop':pic(p[5],w)}
 function fallbackImage(img){if(!img||img.dataset.failed)return;img.dataset.failed='1';const title=encodeURIComponent(img.alt||'ATOM MASTER');img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="500"><rect width="600" height="500" fill="#f7dce5"/><circle cx="300" cy="210" r="120" fill="#e83269"/><text x="300" y="240" text-anchor="middle" fill="white" font-size="94">✦</text><text x="300" y="415" text-anchor="middle" fill="#87113c" font-family="sans-serif" font-size="32">ATOM MASTER</text></svg>')}
 function bindImageErrors(root){root.querySelectorAll('img').forEach(img=>img.addEventListener('error',()=>fallbackImage(img),{once:true}))}
 function card(p){
@@ -138,7 +145,15 @@ document.getElementById('hero-cta').textContent=t().cta;document.getElementById(
 document.getElementById('catalog-desc').textContent=t().desc;document.getElementById('combo-title').textContent=t().combo;
 document.getElementById('combo-desc').textContent=t().comboDesc;document.getElementById('combo-btn').textContent=t().comboBtn;
 document.getElementById('cart-title').textContent=t().cart;document.getElementById('search').placeholder=t().search;
-document.documentElement.lang=lang;render();
+document.documentElement.lang=lang;
+document.getElementById('tag').textContent=lang==='ru'?'ПОПРОБУЙ':lang==='en'?'DISCOVER':'TADI KEŞFET';
+document.getElementById('sort-default').textContent=lang==='ru'?'Рекомендуем':lang==='en'?'Recommended':'Önerilen';
+document.getElementById('sort-asc').textContent=lang==='ru'?'Цена ↑':lang==='en'?'Price ↑':'Fiyat ↑';
+document.getElementById('sort-desc').textContent=lang==='ru'?'Цена ↓':lang==='en'?'Price ↓':'Fiyat ↓';
+document.getElementById('hero-info-1').textContent=lang==='ru'?'✦ 38 позиций':lang==='en'?'✦ 38 menu items':'✦ 38 lezzet';
+document.getElementById('hero-info-2').textContent=lang==='ru'?'♡ Сохраняй любимое':lang==='en'?'♡ Save your favorites':'♡ Favorilerini kaydet';
+document.getElementById('hero-info-3').textContent=lang==='ru'?'🛍 Черновик для кассы':lang==='en'?'🛍 Counter-ready draft':'🛍 Kasada gösterilecek taslak';
+render();
 }
 function save(){localStorage.setItem('atom-cart',JSON.stringify(cart));localStorage.setItem('atom-favs',JSON.stringify(favorites));render()}
 function toast(s){const e=document.getElementById('toast');e.textContent=s;e.classList.add('visible');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>e.classList.remove('visible'),2600)}
