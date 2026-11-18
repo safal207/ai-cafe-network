@@ -195,18 +195,28 @@ function syncUrl(push = false) {
   history[push ? "pushState" : "replaceState"](null,"",url);
 }
 const editorialPhotos = new Map([["Grand Rocher Cup","assets/grand-rocher-editorial.webp"]]);
+// Use the café's original identity. The generated concept logos are never shown.
+const brandStamp = () => '<span class="brand-stamp" aria-hidden="true"><img src="assets/brand.webp" width="360" height="111" alt="" loading="lazy" decoding="async"></span>';
 function img(product, alt = "", eager = false, editorial = false) {
-  const src = (editorial && editorialPhotos.get(product.name)) || product.image;
-  const fallback = src === product.photo ? "" : ` data-image-fallback="${escape(product.photo)}"`;
+  const editorialSource = editorial && editorialPhotos.get(product.name);
+  const src = editorialSource || product.image;
+  // Request more source pixels only for large editorial and detail images;
+  // keep small menu thumbnails economical. Fall back to the original 592px file.
+  const large = (editorial || eager) && !editorialSource;
+  const responsive = large ? ` srcset="${escape(product.photo)} 592w, ${escape(product.photo.replace("/592x0/","/960x0/"))} 960w" sizes="(max-width:640px) calc(100vw - 28px), (max-width:960px) 85vw, 610px"` : "";
+  const fallback = large || src !== product.photo ? ` data-image-fallback="${escape(product.photo)}"` : "";
   const tone = product.category===8 ? "cold" : product.category===7 ? "coffee" : product.category>=10 ? "gift" : "dessert";
-  return `<img class="photo-grade ${tone}" src="${escape(src)}" alt="${escape(alt)}" width="592" height="444" decoding="async" loading="${eager ? "eager" : "lazy"}"${fallback}>`;
+  return `<img class="photo-grade ${tone}" src="${escape(src)}"${responsive} alt="${escape(alt)}" width="592" height="444" decoding="async" loading="${eager ? "eager" : "lazy"}"${fallback}>`;
 }
 document.addEventListener("error",(event)=>{
   const image = event.target;
   if (!(image instanceof HTMLImageElement)) return;
   if (image.dataset.imageFallback) {
-    image.src = image.dataset.imageFallback;
+    const fallback = image.dataset.imageFallback;
     delete image.dataset.imageFallback;
+    image.removeAttribute("srcset");
+    image.removeAttribute("sizes");
+    image.src = fallback;
     return;
   }
   if (image.dataset.replaced) return;
@@ -249,6 +259,7 @@ function renderLandingStories() {
     return `<article class="story-card">
       <div class="story-photo">
         <button type="button" class="story-media" data-detail="${p.id}" aria-label="${labelAction("open",p.name)}">${img(p,p.name,false,true)}</button>
+        ${brandStamp()}
         <div class="photo-actions story-actions">
           <button type="button" class="photo-action" data-favorite="${p.id}" aria-pressed="${saved}" aria-label="${labelAction(saved ? "unsave" : "save",p.name)}">${icons("heart")}<span data-likes>${saved ? "1" : ""}</span></button>
           <span class="photo-action" role="img" aria-label="${labelAction("viewsCount",p.name)} · ${views}">${icons("eye")}<span data-views="${p.id}">${views || ""}</span></span>
@@ -395,6 +406,7 @@ function productCard(p) {
   return `<article class="product">
     <div class="product-photo"${feed ? ` data-feed-photo="${p.id}"` : ""}>
       <button type="button" class="product-media" data-detail="${p.id}" aria-label="${labelAction("open",p.name)}">${img(p,"",false,feed)}</button>
+      ${feed || state.view==="photo" ? brandStamp() : ""}
       ${counts}
     </div>
     <div class="product-body">
@@ -418,7 +430,7 @@ function renderPairs() {
     const [first,second] = pair.products;
     if (state.collection !== "cafe" || (state.mood !== "all" && state.mood !== pair.mood) || ![first,second].some(matchesOtherFilters)) return [];
     return [`<article class="pair">
-      <div class="pair-photos">${img(first,first.name)}${img(second,second.name)}</div>
+      <div class="pair-photos">${img(first,first.name)}${img(second,second.name)}${brandStamp()}</div>
       <div class="pair-copy"><h3>${t("pairNames")[index]}</h3>
       <p lang="tr">${escape(first.name)} + ${escape(second.name)}</p>
       <button type="button" class="primary" data-pair="${index}"><span>${t("addPair")}</span><strong>${money(first.choices[0][1]+second.choices[0][1])}</strong></button>
@@ -451,6 +463,7 @@ function renderDetail() {
   const options = p.choices.length > 1 ? `<label class="option">${t("option")}<select id="variant" lang="tr">${p.choices.map(([name,cents],i)=>
       `<option value="${i}"${state.option===i ? " selected" : ""}>${escape(name)} · ${money(cents)}</option>`).join("")}</select></label>` : "";
   $("#detail-content").innerHTML = `<div class="detail-media">${img(p,p.name,true)}
+      ${brandStamp()}
       <div class="detail-controls">
         <button type="button" class="icon-button" data-share="${p.id}" aria-label="${t("share")}">${icons("share")}</button>
         <button type="button" class="icon-button" data-favorite="${p.id}" aria-label="${labelAction(isSaved ? "unsave" : "save",p.name)}" aria-pressed="${isSaved}">${icons("heart")}</button>
