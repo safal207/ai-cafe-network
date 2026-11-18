@@ -12,7 +12,7 @@ const copy = {
   tr: {
     skip:"İçeriğe geç",home:"Ana sayfa",menu:"Menü",visit:"Kafeyi keşfet",pairNav:"Tatlı eşleşmeler",cart:"Sepet",
     heroKicker:"BELÇİKA ÇİKOLATASI",hero1:"Çikolataya",hero2:"bir mola.",heroText:"Çikolata Evim'de Belçika çikolatalı tatlılar, waffle ve kahve.",
-    explore:"Menüyü keşfet",moodTitle:"Bugün modun nasıl?",clearMood:"Seçimi kaldır",
+    explore:"Menüyü keşfet",tastingKicker:"TATLARIN HİKÂYESİ",tastingTitle:"Gözünle seç, keyfini çıkar.",tastingText:"İlk önce fotoğraf. Sonra seni mutlu eden bir tat. Favorini keşfet.",tastingMore:"Fotoğraflı menüyü aç",tastingDetail:"Lezzeti keşfet",moodTitle:"Bugün modun nasıl?",clearMood:"Seçimi kaldır",
     visitTitle:"Kendine tatlı bir mola ver.",visitText:"Kahveni burada yudumla veya sevdiğin tatlıyı yanında götür.",locations:"Mağazaları bul",
     localActivity:"Bu cihazdaki etkinlik",viewsCount:"Görüntülenme",shareCount:"Paylaşım",
     menuTitle:"Kafe menüsü",chocolateTitle:"Çikolatalarımız", all:"Tümü",cafe:"Kafe",chocolate:"Çikolata",search:"Menüde ara",favorites:"Favoriler",
@@ -31,7 +31,7 @@ const copy = {
   ru: {
     skip:"Перейти к содержимому",home:"Главная",menu:"Меню",visit:"О кафе",pairNav:"Вкусные пары",cart:"Корзина",
     heroKicker:"БЕЛЬГИЙСКИЙ ШОКОЛАД",hero1:"Пауза",hero2:"на шоколад.",heroText:"Тёплые вафли, шоколадные десерты и кофе в Çikolata Evim.",
-    explore:"Смотреть меню",moodTitle:"Какое сегодня настроение?",clearMood:"Сбросить",
+    explore:"Смотреть меню",tastingKicker:"ИСТОРИИ ВКУСА",tastingTitle:"Сначала влюбись глазами.",tastingText:"Знакомься со вкусом через фотографии. Открой десерт, сохрани или поделись.",tastingMore:"Открыть фотоленту",tastingDetail:"Посмотреть десерт",moodTitle:"Какое сегодня настроение?",clearMood:"Сбросить",
     visitTitle:"Заходи на сладкую паузу",visitText:"Выпей кофе у нас или возьми любимый десерт с собой.",locations:"Найти кафе",
     localActivity:"Активность на этом устройстве",viewsCount:"Просмотры",shareCount:"Поделились",
     menuTitle:"Меню кафе",chocolateTitle:"Шоколад и подарки",all:"Все",cafe:"Кафе",chocolate:"Шоколад",search:"Поиск по меню",favorites:"Избранное",
@@ -50,7 +50,7 @@ const copy = {
   en: {
     skip:"Skip to content",home:"Home",menu:"Menu",visit:"About the café",pairNav:"Sweet pairings",cart:"Basket",
     heroKicker:"BELGIAN CHOCOLATE",hero1:"Time for",hero2:"chocolate.",heroText:"Warm waffles, chocolate desserts and coffee at Çikolata Evim.",
-    explore:"Explore the menu",moodTitle:"What's your mood today?",clearMood:"Clear mood",
+    explore:"Explore the menu",tastingKicker:"STORIES OF FLAVOUR",tastingTitle:"Fall for it with your eyes first.",tastingText:"Discover the dessert in a photo. Save what you love or share it.",tastingMore:"Open the photo feed",tastingDetail:"Explore this dessert",moodTitle:"What's your mood today?",clearMood:"Clear mood",
     visitTitle:"Stay for something sweet",visitText:"Enjoy your coffee here or take your favorite dessert with you.",locations:"Find a café",
     localActivity:"Activity on this device",viewsCount:"Views",shareCount:"Shares",
     menuTitle:"Café menu",chocolateTitle:"Chocolates & gifts",all:"All",cafe:"Café",chocolate:"Chocolate",search:"Search the menu",favorites:"Favorites",
@@ -239,6 +239,30 @@ function paintInterface() {
   renderScreen();
   if ($("#detail").open && state.detail) renderDetail();
 }
+function renderLandingStories() {
+  const container = $("#landing-stories");
+  container.setAttribute("aria-label",t("tastingTitle"));
+  container.innerHTML = featured.slice(0,3).map((p)=>{
+    const saved = state.saved.has(p.id);
+    const views = countActivity(p.id,"views");
+    const shares = countActivity(p.id,"shares");
+    return `<article class="story-card">
+      <div class="story-photo">
+        <button type="button" class="story-media" data-detail="${p.id}" aria-label="${labelAction("open",p.name)}">${img(p,p.name,false,true)}</button>
+        <div class="photo-actions story-actions">
+          <button type="button" class="photo-action" data-favorite="${p.id}" aria-pressed="${saved}" aria-label="${labelAction(saved ? "unsave" : "save",p.name)}">${icons("heart")}<span data-likes>${saved ? "1" : ""}</span></button>
+          <span class="photo-action" role="img" aria-label="${labelAction("viewsCount",p.name)} · ${views}">${icons("eye")}<span data-views="${p.id}">${views || ""}</span></span>
+          <button type="button" class="photo-action" data-share="${p.id}" aria-label="${labelAction("share",p.name)} · ${shares}">${icons("share")}<span data-shares="${p.id}">${shares || ""}</span></button>
+        </div>
+        <div class="story-caption">
+          <h3 lang="tr">${escape(p.name)}</h3>
+          <p>${shownPrice(p)}</p>
+          <button type="button" data-detail="${p.id}">${t("tastingDetail")} ${icons("arrow")}</button>
+        </div>
+      </div>
+    </article>`;
+  }).join("");
+}
 function renderScreen() {
   const isMenu = state.screen==="menu";
   $("#landing").hidden = isMenu;
@@ -254,7 +278,7 @@ function renderScreen() {
     link.href = url.href;
   });
   if (isMenu) renderMenu();
-  else stopObservingPhotos();
+  else { stopObservingPhotos(); renderLandingStories(); }
   renderCart();
 }
 function goTo(screen, {view="feed",savedOnly=false,visit=false,search=false}={}) {
@@ -360,11 +384,11 @@ function productCard(p) {
   const feed = state.view==="feed";
   const addAttrs = p.choices.length === 1 ? `data-add="${p.id}" aria-label="${labelAction("add",p.name)}"`
     : `data-detail="${p.id}" aria-label="${labelAction("options",p.name)}"`;
-  const like = `<button type="button" class="${feed ? "photo-action" : "icon-button favorite"}" data-favorite="${p.id}" aria-pressed="${isSaved}" aria-label="${labelAction(isSaved ? "unsave" : "save",p.name)}">${icons("heart")}${feed ? `<span data-likes>${Number(isSaved)}</span>` : ""}</button>`;
+  const like = `<button type="button" class="${feed ? "photo-action" : "icon-button favorite"}" data-favorite="${p.id}" aria-pressed="${isSaved}" aria-label="${labelAction(isSaved ? "unsave" : "save",p.name)}">${icons("heart")}${feed ? `<span data-likes>${isSaved ? "1" : ""}</span>` : ""}</button>`;
   const counts = feed ? `<div class="photo-actions">
     ${like}
-    <span class="photo-action" role="img" aria-label="${labelAction("viewsCount",p.name)} · ${countActivity(p.id,"views")}">${icons("eye")}<span data-views="${p.id}">${countActivity(p.id,"views")}</span></span>
-    <button type="button" class="photo-action" data-share="${p.id}" aria-label="${labelAction("share",p.name)} · ${countActivity(p.id,"shares")}">${icons("share")}<span data-shares="${p.id}">${countActivity(p.id,"shares")}</span></button>
+    <span class="photo-action" role="img" aria-label="${labelAction("viewsCount",p.name)} · ${countActivity(p.id,"views")}">${icons("eye")}<span data-views="${p.id}">${countActivity(p.id,"views") || ""}</span></span>
+    <button type="button" class="photo-action" data-share="${p.id}" aria-label="${labelAction("share",p.name)} · ${countActivity(p.id,"shares")}">${icons("share")}<span data-shares="${p.id}">${countActivity(p.id,"shares") || ""}</span></button>
   </div>` : like;
   return `<article class="product">
     <div class="product-photo"${feed ? ` data-feed-photo="${p.id}"` : ""}>
