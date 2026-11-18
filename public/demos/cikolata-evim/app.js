@@ -10,9 +10,11 @@ const $ = (selector) => document.querySelector(selector);
 
 const copy = {
   tr: {
-    skip:"Menüye geç",menu:"Menü",moodsNav:"Ruh haline göre",pairNav:"Tatlı eşleşmeler",cart:"Sepet",
-    heroKicker:"BELÇİKA ÇİKOLATASI",hero1:"Bir dünya",hero2:"mutluluk.",heroText:"Tatlı ve kahveyle küçük bir mola.",
-    explore:"Menüyü keşfet",heroAdd:"Sepete ekle",moodTitle:"Bugün modun nasıl?",clearMood:"Seçimi kaldır",
+    skip:"İçeriğe geç",home:"Ana sayfa",menu:"Menü",visit:"Kafeyi keşfet",pairNav:"Tatlı eşleşmeler",cart:"Sepet",
+    heroKicker:"BELÇİKA ÇİKOLATASI",hero1:"Çikolataya",hero2:"bir mola.",heroText:"Çikolata Evim'de Belçika çikolatalı tatlılar, waffle ve kahve.",
+    explore:"Menüyü keşfet",moodTitle:"Bugün modun nasıl?",clearMood:"Seçimi kaldır",
+    visitTitle:"Kendine tatlı bir mola ver.",visitText:"Kahveni burada yudumla veya sevdiğin tatlıyı yanında götür.",locations:"Mağazaları bul",
+    localActivity:"Bu cihazdaki etkinlik",viewsCount:"Görüntülenme",shareCount:"Paylaşım",
     menuTitle:"Kafe menüsü",chocolateTitle:"Çikolatalarımız", all:"Tümü",cafe:"Kafe",chocolate:"Çikolata",search:"Menüde ara",favorites:"Favoriler",
     categories:"Kategoriler",views:"Görünüm",feed:"Akış",photo:"Fotoğraf",list:"Liste",pair:"Eşleşmeler",more:"Daha fazla göster",
     demo:"Bağımsız menü demosu",source:"Orijinal QR menü",items:"ürün",pairs:"eşleşme",empty:"Bu seçimle eşleşen ürün bulunamadı.",reset:"Filtreleri sıfırla",
@@ -27,9 +29,11 @@ const copy = {
     ingredients:"Menüdeki açıklama (Türkçe)", itemLink:"QR menüde aç"
   },
   ru: {
-    skip:"Перейти к меню",menu:"Меню",moodsNav:"По настроению",pairNav:"Вкусные пары",cart:"Корзина",
-    heroKicker:"БЕЛЬГИЙСКИЙ ШОКОЛАД",hero1:"Целый мир",hero2:"счастья.",heroText:"Пауза для десерта и кофе.",
-    explore:"Смотреть меню",heroAdd:"Добавить",moodTitle:"Какое сегодня настроение?",clearMood:"Сбросить",
+    skip:"Перейти к содержимому",home:"Главная",menu:"Меню",visit:"О кафе",pairNav:"Вкусные пары",cart:"Корзина",
+    heroKicker:"БЕЛЬГИЙСКИЙ ШОКОЛАД",hero1:"Пауза",hero2:"на шоколад.",heroText:"Тёплые вафли, шоколадные десерты и кофе в Çikolata Evim.",
+    explore:"Смотреть меню",moodTitle:"Какое сегодня настроение?",clearMood:"Сбросить",
+    visitTitle:"Заходи на сладкую паузу",visitText:"Выпей кофе у нас или возьми любимый десерт с собой.",locations:"Найти кафе",
+    localActivity:"Активность на этом устройстве",viewsCount:"Просмотры",shareCount:"Поделились",
     menuTitle:"Меню кафе",chocolateTitle:"Шоколад и подарки",all:"Все",cafe:"Кафе",chocolate:"Шоколад",search:"Поиск по меню",favorites:"Избранное",
     categories:"Категории",views:"Режим меню",feed:"Лента",photo:"Фото",list:"Список",pair:"Пары",more:"Показать ещё",
     demo:"Независимая демоверсия меню",source:"Исходное QR-меню",items:"позиций",pairs:"сочетаний",empty:"По этим фильтрам ничего не нашлось.",reset:"Сбросить фильтры",
@@ -44,9 +48,11 @@ const copy = {
     ingredients:"Описание из меню (на турецком)",itemLink:"Открыть в QR-меню"
   },
   en: {
-    skip:"Skip to menu",menu:"Menu",moodsNav:"By mood",pairNav:"Sweet pairings",cart:"Basket",
-    heroKicker:"BELGIAN CHOCOLATE",hero1:"A world of",hero2:"happiness.",heroText:"A little break for dessert and coffee.",
-    explore:"Explore the menu",heroAdd:"Add to basket",moodTitle:"What's your mood today?",clearMood:"Clear mood",
+    skip:"Skip to content",home:"Home",menu:"Menu",visit:"About the café",pairNav:"Sweet pairings",cart:"Basket",
+    heroKicker:"BELGIAN CHOCOLATE",hero1:"Time for",hero2:"chocolate.",heroText:"Warm waffles, chocolate desserts and coffee at Çikolata Evim.",
+    explore:"Explore the menu",moodTitle:"What's your mood today?",clearMood:"Clear mood",
+    visitTitle:"Stay for something sweet",visitText:"Enjoy your coffee here or take your favorite dessert with you.",locations:"Find a café",
+    localActivity:"Activity on this device",viewsCount:"Views",shareCount:"Shares",
     menuTitle:"Café menu",chocolateTitle:"Chocolates & gifts",all:"All",cafe:"Café",chocolate:"Chocolate",search:"Search the menu",favorites:"Favorites",
     categories:"Categories",views:"Menu view",feed:"Feed",photo:"Photos",list:"List",pair:"Pairs",more:"Show more",
     demo:"Independent menu demo",source:"Original QR menu",items:"items",pairs:"pairings",empty:"No products match these filters.",reset:"Reset filters",
@@ -68,6 +74,9 @@ const categoryNames = {
 };
 
 const paths = {
+  home:'<path d="M3 10.5 12 3l9 7.5M5.5 9v12h13V9M10 21v-6h4v6"/>',
+  down:'<path d="M12 4v15m-6-6 6 6 6-6"/>',
+  eye:'<path d="M2.5 12s3.4-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.4 6.5-9.5 6.5S2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="2.5"/>',
   bag:'<path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/>',
   spark:'<path d="M12 2v5m0 10v5M2 12h5m10 0h5M5 5l3.5 3.5m7 7L19 19m0-14-3.5 3.5m-7 7L5 19"/>',
   arrow:'<path d="M4 12h15m-6-6 6 6-6 6"/>',
@@ -115,17 +124,32 @@ const pairings = [
 ].map(([first,second,mood])=>({products:[byName.get(first),byName.get(second)],mood}));
 
 const params = new URLSearchParams(location.search);
+const linkedProduct = byId.get(params.get("item"));
 const stored = safeRead();
 const validView = (view) => ["feed","photo","list","pair"].includes(view);
 const validLang = (lang) => typeof lang === "string" && Object.hasOwn(copy,lang);
 const validMood = (mood) => mood === "all" || Object.hasOwn(moods,mood);
 const validCategory = (category) => Number.isInteger(category) && Boolean(SOURCE_MENU.categories[category]);
 const validCollection = (collection) => collection === "cafe" || collection === "chocolate";
+const menuRoute = (p) => p.get("screen")==="menu" || ["view","item","category","mood","collection"].some((key)=>p.has(key));
+const validCount = (number) => Number.isSafeInteger(number) && number > 0 ? number : 0;
+const activity = new Map();
+for (const [id,value] of Object.entries(stored.activity || {})) {
+  if (byId.has(id) && value && typeof value==="object") {
+    activity.set(id,{views:validCount(value.views),shares:validCount(value.shares)});
+  }
+}
+const seen = new Set();
+try {
+  const previous = JSON.parse(sessionStorage.getItem("cikolata-evim.seen") || "[]");
+  if (Array.isArray(previous)) for (const id of previous) if (byId.has(id)) seen.add(id);
+} catch { /* The current tab can still track its views. */ }
 const state = {
+  screen:menuRoute(params) ? "menu" : "home",
   lang:[params.get("lang"),stored.lang].find(validLang) || "tr",
-  view:[params.get("view"),stored.view].find(validView) || "feed",
+  view:[params.get("view"),linkedProduct ? "feed" : stored.view].find(validView) || "feed",
   mood:[params.get("mood"),stored.mood].find(validMood) || "all",
-  collection:validCollection(params.get("collection")) ? params.get("collection") : "cafe",
+  collection:validCollection(params.get("collection")) ? params.get("collection") : SOURCE_MENU.categories[linkedProduct?.category]?.[1] || "cafe",
   category:params.has("category") && validCategory(Number(params.get("category"))) ? Number(params.get("category")) : "all",
   query:"",savedOnly:false,limit:pageSize,
   saved:new Set(Array.isArray(stored.saved) ? stored.saved.filter((id)=>byId.has(id)) : []),
@@ -151,21 +175,31 @@ function notify(message) {
 }
 function persist() {
   try {
-    localStorage.setItem(storageKey, JSON.stringify({lang:state.lang,view:state.view,mood:state.mood,cart:state.cart,saved:[...state.saved],service:state.service}));
+    localStorage.setItem(storageKey, JSON.stringify({lang:state.lang,view:state.view,mood:state.mood,cart:state.cart,saved:[...state.saved],service:state.service,activity:Object.fromEntries(activity)}));
   } catch { /* Current selections remain available for this visit. */ }
 }
-function syncUrl() {
+function syncUrl(push = false) {
   const url = new URL(location.href);
-  for (const key of ["lang","view","mood","category","collection"]) url.searchParams.set(key,state[key]);
-  if (state.category === "all") url.searchParams.delete("category");
-  if (state.mood === "all") url.searchParams.delete("mood");
-  if (state.collection === "cafe") url.searchParams.delete("collection");
-  history.replaceState(null,"",url);
+  url.searchParams.set("lang",state.lang);
+  const keys = ["view","mood","category","collection"];
+  if (state.screen==="home") {
+    for (const key of ["screen","item",...keys]) url.searchParams.delete(key);
+  } else {
+    url.searchParams.set("screen","menu");
+    url.hash = "";
+    for (const key of keys) url.searchParams.set(key,state[key]);
+    if (state.category === "all") url.searchParams.delete("category");
+    if (state.mood === "all") url.searchParams.delete("mood");
+    if (state.collection === "cafe") url.searchParams.delete("collection");
+  }
+  history[push ? "pushState" : "replaceState"](null,"",url);
 }
-function img(product, alt = "", eager = false) {
-  const src = escape(product.image);
-  const fallback = product.image === product.photo ? "" : ` data-image-fallback="${escape(product.photo)}"`;
-  return `<img src="${src}" alt="${escape(alt)}" width="592" height="444" decoding="async" loading="${eager ? "eager" : "lazy"}"${fallback}>`;
+const editorialPhotos = new Map([["Grand Rocher Cup","assets/grand-rocher-editorial.webp"]]);
+function img(product, alt = "", eager = false, editorial = false) {
+  const src = (editorial && editorialPhotos.get(product.name)) || product.image;
+  const fallback = src === product.photo ? "" : ` data-image-fallback="${escape(product.photo)}"`;
+  const tone = product.category===8 ? "cold" : product.category===7 ? "coffee" : product.category>=10 ? "gift" : "dessert";
+  return `<img class="photo-grade ${tone}" src="${escape(src)}" alt="${escape(alt)}" width="592" height="444" decoding="async" loading="${eager ? "eager" : "lazy"}"${fallback}>`;
 }
 document.addEventListener("error",(event)=>{
   const image = event.target;
@@ -200,20 +234,45 @@ function paintInterface() {
   $("#categories").setAttribute("aria-label",t("categories"));
   $("#views").setAttribute("aria-label",t("views"));
   $("#lang").value = state.lang;
-  $("[data-close=basket]").setAttribute("aria-label",t("close"));
-  renderHero();
-  renderMenu();
-  renderCart();
+  document.querySelectorAll("dialog [data-close]").forEach((el)=>el.setAttribute("aria-label",t("close")));
+  $("#share-link").setAttribute("aria-label",t("copyLink"));
+  renderScreen();
   if ($("#detail").open && state.detail) renderDetail();
 }
-function renderHero() {
-  const hero = byName.get("Grand Rocher Cup");
-  $("#hero-img").dataset.imageFallback = hero.photo;
-  $("#hero-item").dataset.detail = hero.id;
-  $("#hero-name").textContent = hero.name;
-  $("#hero-add").dataset.add = hero.id;
-  $("#hero-add").setAttribute("aria-label",`${t("heroAdd")} · ${hero.name} · ${money(hero.choices[0][1])}`);
-  $("#hero-price").textContent = money(hero.choices[0][1]);
+function renderScreen() {
+  const isMenu = state.screen==="menu";
+  $("#landing").hidden = isMenu;
+  $("#menu-page").hidden = !isMenu;
+  $("#visit-form").elements.service.value = state.service;
+  document.documentElement.dataset.mood = isMenu ? state.mood : "all";
+  document.querySelectorAll("a[data-nav]").forEach((link)=>{
+    const screen = link.dataset.nav;
+    const url = new URL(location.pathname,location.origin);
+    url.searchParams.set("lang",state.lang);
+    if (screen==="menu") url.searchParams.set("screen","menu");
+    if (screen==="visit") url.hash="visit";
+    link.href = url.href;
+  });
+  if (isMenu) renderMenu();
+  else stopObservingPhotos();
+  renderCart();
+}
+function goTo(screen, {view="feed",savedOnly=false,visit=false,search=false}={}) {
+  const moved = state.screen!==screen;
+  if (screen==="menu") {
+    Object.assign(state,{view,savedOnly,category:"all",collection:"cafe",mood:"all",query:"",limit:pageSize});
+    $("#search").value="";
+  }
+  state.screen = screen;
+  syncUrl(moved);
+  persist();
+  renderScreen();
+  if (visit) {
+    $("#visit").scrollIntoView();
+  } else {
+    window.scrollTo({top:0,behavior:"instant"});
+    (search ? $("#search") : screen==="menu" ? $("#menu-title") : $("#hero-title")).focus({preventScroll:true});
+  }
 }
 function renderMood() {
   document.documentElement.dataset.mood = state.mood;
@@ -250,13 +309,68 @@ function matchesOtherFilters(product) {
   return (state.category === "all" || product.category === state.category) && matchesQuery(product)
     && (!state.savedOnly || state.saved.has(product.id));
 }
+function countActivity(id, kind) {
+  return activity.get(id)?.[kind] || 0;
+}
+function recordActivity(id, kind) {
+  const entry = activity.get(id) || {views:0,shares:0};
+  entry[kind] = Math.min(Number.MAX_SAFE_INTEGER, entry[kind]+1);
+  activity.set(id,entry);
+  const counter = $(`[data-${kind}="${id}"]`);
+  if (counter) {
+    counter.textContent = entry[kind];
+    const parent = counter.parentElement;
+    const name = byId.get(id).name;
+    parent.setAttribute("aria-label",`${t(kind==="views" ? "viewsCount" : "share")} · ${name} · ${entry[kind]}`);
+  }
+  persist();
+}
+function recordView(id) {
+  if (seen.has(id)) return;
+  seen.add(id);
+  try {sessionStorage.setItem("cikolata-evim.seen",JSON.stringify([...seen]));} catch { /* The current page retains the view. */ }
+  recordActivity(id,"views");
+}
+const viewTimers = new Map();
+const feedObserver = "IntersectionObserver" in window ? new IntersectionObserver((entries)=>{
+  for (const {target,isIntersecting,intersectionRatio} of entries) {
+    clearTimeout(viewTimers.get(target));
+    viewTimers.delete(target);
+    const id = target.dataset.feedPhoto;
+    if (!isIntersecting || intersectionRatio<0.6 || seen.has(id)) continue;
+    viewTimers.set(target,setTimeout(()=>{
+      viewTimers.delete(target);
+      if (target.isConnected && state.screen==="menu" && !document.hidden && !$("dialog[open]")) recordView(id);
+    },500));
+  }
+},{threshold:0.6}) : null;
+function stopObservingPhotos() {
+  feedObserver?.disconnect();
+  for (const timer of viewTimers.values()) clearTimeout(timer);
+  viewTimers.clear();
+}
+function renderCatalog() {
+  stopObservingPhotos();
+  $("#catalog").innerHTML = state.view==="pair" ? renderPairs() : renderProducts();
+  document.querySelectorAll("[data-feed-photo]").forEach((photo)=>feedObserver?.observe(photo));
+  $("#local-activity").hidden = state.view!=="feed";
+}
 function productCard(p) {
   const isSaved = state.saved.has(p.id);
+  const feed = state.view==="feed";
   const addAttrs = p.choices.length === 1 ? `data-add="${p.id}" aria-label="${labelAction("add",p.name)}"`
     : `data-detail="${p.id}" aria-label="${labelAction("options",p.name)}"`;
+  const like = `<button type="button" class="${feed ? "photo-action" : "icon-button favorite"}" data-favorite="${p.id}" aria-pressed="${isSaved}" aria-label="${labelAction(isSaved ? "unsave" : "save",p.name)}">${icons("heart")}${feed ? `<span data-likes>${Number(isSaved)}</span>` : ""}</button>`;
+  const counts = feed ? `<div class="photo-actions">
+    ${like}
+    <span class="photo-action" role="img" aria-label="${labelAction("viewsCount",p.name)} · ${countActivity(p.id,"views")}">${icons("eye")}<span data-views="${p.id}">${countActivity(p.id,"views")}</span></span>
+    <button type="button" class="photo-action" data-share="${p.id}" aria-label="${labelAction("share",p.name)} · ${countActivity(p.id,"shares")}">${icons("share")}<span data-shares="${p.id}">${countActivity(p.id,"shares")}</span></button>
+  </div>` : like;
   return `<article class="product">
-    <button type="button" class="product-media" data-detail="${p.id}" aria-label="${labelAction("open",p.name)}">${img(p)}</button>
-    <button type="button" class="icon-button favorite" data-favorite="${p.id}" aria-pressed="${isSaved}" aria-label="${labelAction(isSaved ? "unsave" : "save",p.name)}">${icons("heart")}</button>
+    <div class="product-photo"${feed ? ` data-feed-photo="${p.id}"` : ""}>
+      <button type="button" class="product-media" data-detail="${p.id}" aria-label="${labelAction("open",p.name)}">${img(p,"",false,feed)}</button>
+      ${counts}
+    </div>
     <div class="product-body">
      <button type="button" class="product-name" data-detail="${p.id}">${escape(p.name)}</button>
      <span class="product-price">${shownPrice(p)}</span>
@@ -293,12 +407,12 @@ function renderMenu() {
   renderMood();
   renderFilters();
   const favoriteFocus = document.activeElement?.dataset.favorite;
-  $("#catalog").innerHTML = state.view==="pair" ? renderPairs() : renderProducts();
+  renderCatalog();
   if (favoriteFocus) $("#catalog [data-favorite='" + favoriteFocus + "']")?.focus({preventScroll:true});
   renderDock();
 }
 function renderDock() {
-  const area = $("#basket").open ? "cart" : state.savedOnly ? "saved" : state.view==="pair" ? "pair" : "menu";
+  const area = $("#basket").open ? "cart" : state.screen==="home" ? "home" : state.savedOnly ? "saved" : state.view==="pair" ? "pair" : "menu";
   document.querySelectorAll(".mobile-nav [data-dock]").forEach((button)=> {
     if (button.dataset.dock===area) button.setAttribute("aria-current","true");
     else button.removeAttribute("aria-current");
@@ -312,7 +426,7 @@ function renderDetail() {
       `<option value="${i}"${state.option===i ? " selected" : ""}>${escape(name)} · ${money(cents)}</option>`).join("")}</select></label>` : "";
   $("#detail-content").innerHTML = `<div class="detail-media">${img(p,p.name,true)}
       <div class="detail-controls">
-        <button type="button" class="icon-button" data-share aria-label="${t("share")}">${icons("share")}</button>
+        <button type="button" class="icon-button" data-share="${p.id}" aria-label="${t("share")}">${icons("share")}</button>
         <button type="button" class="icon-button" data-favorite="${p.id}" aria-label="${labelAction(isSaved ? "unsave" : "save",p.name)}" aria-pressed="${isSaved}">${icons("heart")}</button>
         <button type="button" class="icon-button" data-close="detail" aria-label="${t("close")}" autofocus>${icons("close")}</button>
       </div>
@@ -322,7 +436,7 @@ function renderDetail() {
       ${options}
       ${price === undefined ? `<p>${t(p.byWeight ? "soldByWeight" : "confirmAtCafe")}</p><div class="detail-foot"><strong>${shownPrice(p)}</strong></div>`
       : `<button type="button" class="primary" id="detail-add" data-add="${p.id}" data-index="${state.option}"><span>${t("add")}</span><strong>${money(price)}</strong></button>`}
-      <p class="share-status" role="status" id="share-status"></p><input type="url" readonly hidden class="share-link" id="share-link" aria-label="${t("copyLink")}">
+      <p class="share-status" role="status" id="detail-share-status"></p>
       <a class="text-button detail-foot" href="${SOURCE_MENU.categories[p.category][1] === "cafe" ? sourceUrl : chocolateSourceUrl}/detail/${p.id}" target="_blank" rel="noopener">${t("itemLink")}${icons("external")}</a>
     </div>`;
 }
@@ -417,6 +531,7 @@ function changeMenu(change) {
   renderMenu();
 }
 function openDetail(id) {
+  recordView(id);
   state.detail = id;
   state.option = 0;
   renderDetail();
@@ -440,14 +555,15 @@ async function showStaff() {
     if (document.execCommand?.("copy")) $("#basket-status").textContent = t("copied");
   }
 }
-async function shareItem() {
-  const product = byId.get(state.detail);
+async function shareItem(id) {
+  const product = byId.get(id);
   const url = new URL(location.pathname,location.origin);
   url.searchParams.set("item",product.id);
   url.searchParams.set("lang",state.lang);
   if (navigator.share) {
     try {
       await navigator.share({title:`${product.name} · Çikolata Evim`,url:url.href});
+      recordActivity(id,"shares");
       return;
     } catch (error) {
       if (error.name === "AbortError") return;
@@ -456,16 +572,27 @@ async function shareItem() {
   const status = $("#share-status");
   try {
     await navigator.clipboard.writeText(url.href);
-    status.textContent = t("linkCopied");
+    recordActivity(id,"shares");
+    if ($("#detail").open) $("#detail-share-status").textContent = t("linkCopied");
+    else notify(t("linkCopied"));
   } catch {
     status.textContent = t("copyLink");
     const field = $("#share-link");
     field.value = url.href;
-    field.hidden = false;
+    field.dataset.item = id;
+    if (!$("#share-sheet").open) $("#share-sheet").showModal();
+    field.focus();
     field.select();
   }
 }
 document.addEventListener("click",(event)=>{
+  const link = event.target.closest("a[data-nav]");
+  if (link && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
+    event.preventDefault();
+    const route = link.dataset.nav;
+    goTo(route==="menu" ? "menu" : "home",{visit:route==="visit"});
+    return;
+  }
   const button = event.target.closest("button");
   if (!button) return;
   const d = button.dataset;
@@ -477,19 +604,17 @@ document.addEventListener("click",(event)=>{
     return;
   }
   if (d.openSearch !== undefined) {
+    if (state.screen==="home") goTo("menu",{search:true});
     $("#menu").scrollIntoView();
     $("#search").focus({preventScroll:true});
     return;
   }
   if (d.dock) {
     if (d.browse !== undefined) $("#basket").close();
-    const view = d.dock==="pair" ? "pair" : state.view==="pair" ? "feed" : state.view;
-    changeMenu({view,collection:"cafe",category:"all",mood:"all",query:"",savedOnly:d.dock==="saved"});
-    $("#search").value="";
-    $("#menu").scrollIntoView();
+    goTo(d.dock==="home" ? "home" : "menu",{view:d.dock==="pair" ? "pair" : "feed",savedOnly:d.dock==="saved"});
     return;
   }
-  if (d.share !== undefined) { void shareItem(); return; }
+  if (d.share) { void shareItem(d.share); return; }
   if (d.service) {
     state.service = d.service;
     persist();
@@ -518,14 +643,17 @@ document.addEventListener("click",(event)=>{
     return;
   }
   if (d.favorite) {
-    if (state.saved.has(d.favorite)) state.saved.delete(d.favorite);
-    else state.saved.add(d.favorite);
+    const id = d.favorite;
+    if (state.saved.has(id)) state.saved.delete(id);
+    else state.saved.add(id);
     persist();
-    renderMenu();
-    if ($("#detail").open) {
-      const p=byId.get(d.favorite);
-      button.setAttribute("aria-pressed",state.saved.has(d.favorite));
-      button.setAttribute("aria-label",`${t(state.saved.has(d.favorite) ? "unsave" : "save")} · ${p.name}`);
+    const saved = state.saved.has(id);
+    if (state.savedOnly && !saved) renderMenu();
+    for (const control of document.querySelectorAll(`[data-favorite="${id}"]`)) {
+      control.setAttribute("aria-pressed",saved);
+      control.setAttribute("aria-label",`${t(saved ? "unsave" : "save")} · ${byId.get(id).name}`);
+      const label = control.querySelector("[data-likes]");
+      if (label) label.textContent = Number(saved);
     }
     return;
   }
@@ -540,6 +668,7 @@ document.addEventListener("click",(event)=>{
   if (d.category !== undefined) { changeMenu({category:d.category==="all" ? "all" : Number(d.category),mood:"all"}); return; }
   if (d.view || d.viewLink) {
     const view=d.view||d.viewLink;
+    if (state.screen==="home") { goTo("menu",{view}); return; }
     changeMenu(view==="pair" ? {view,collection:"cafe",category:"all",savedOnly:false} : {view});
     if (d.viewLink) $("#menu").scrollIntoView();
     return;
@@ -554,14 +683,23 @@ document.addEventListener("click",(event)=>{
   if (button.id==="more") {
     const previous=state.limit;
     state.limit+=pageSize;
-    $("#catalog").innerHTML=renderProducts();
+    renderCatalog();
     $("#catalog article:nth-child("+(previous+1)+") .product-name")?.focus({preventScroll:true});
   }
 });
 $("#search").addEventListener("input",(event)=> {
   state.query=event.target.value;
   state.limit=pageSize;
-  $("#catalog").innerHTML=state.view==="pair" ? renderPairs() : renderProducts();
+  renderCatalog();
+});
+$("#visit-form").addEventListener("submit",(event)=>{
+  event.preventDefault();
+  state.service = event.currentTarget.elements.service.value;
+  goTo("menu");
+});
+$("#share-link").addEventListener("copy",(event)=>{
+  const id = event.currentTarget.dataset.item;
+  if (id) recordActivity(id,"shares");
 });
 $("#lang").addEventListener("change",(event)=>{
   state.lang=event.target.value;
@@ -592,7 +730,22 @@ $("#detail").addEventListener("close",()=>{
   const url = new URL(location.href);
   if (!url.searchParams.has("item")) return;
   url.searchParams.delete("item");
+  url.searchParams.set("screen","menu");
+  url.searchParams.set("view",state.view);
+  if (state.collection!=="cafe") url.searchParams.set("collection",state.collection);
   history.replaceState(null,"",url);
 });
+window.addEventListener("popstate",()=>{
+  const route = new URLSearchParams(location.search);
+  state.screen = menuRoute(route) ? "menu" : "home";
+  state.lang = validLang(route.get("lang")) ? route.get("lang") : state.lang;
+  state.view = validView(route.get("view")) ? route.get("view") : "feed";
+  state.mood = validMood(route.get("mood")) ? route.get("mood") : "all";
+  state.category = route.has("category") && validCategory(Number(route.get("category"))) ? Number(route.get("category")) : "all";
+  state.collection = state.category!=="all" ? SOURCE_MENU.categories[state.category][1] : validCollection(route.get("collection")) ? route.get("collection") : "cafe";
+  Object.assign(state,{query:"",savedOnly:false,limit:pageSize});
+  $("#search").value = "";
+  paintInterface();
+});
 paintInterface();
-if (byId.has(params.get("item"))) openDetail(params.get("item"));
+if (linkedProduct) openDetail(linkedProduct.id);

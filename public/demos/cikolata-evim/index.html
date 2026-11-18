@@ -4,21 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f5f8ff">
-  <meta name="description" content="Çikolata Evim menüsünü keşfedin. Tatlı, kahve ve çikolatalı eşleşmeleri ruh halinize göre seçin.">
-  <title>Çikolata Evim · Dijital Menü</title>
+  <meta name="description" content="Çikolata Evim'e hoş geldiniz. Belçika çikolatası, tatlılar ve kahve için küçük bir mola.">
+  <title>Çikolata Evim · Çikolata ve Kahve</title>
   <link rel="icon" href="assets/brand.webp" type="image/webp">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
   <script src="menu.js" defer></script>
-  <script src="app.js?v=2" defer></script>
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
-  <a class="skip" href="#menu" data-t="skip">Menüye geç</a>
+  <a class="skip" href="#main" data-t="skip">İçeriğe geç</a>
   <header class="header">
     <div class="wrap header-inner">
-      <a class="brand" href="./" aria-label="Çikolata Evim"><img src="assets/brand.webp" alt="Çikolata Evim" width="360" height="111"></a>
+      <a class="brand" href="./" data-nav="home" aria-label="Çikolata Evim"><img src="assets/brand.webp" alt="Çikolata Evim" width="360" height="111"></a>
       <nav class="top-nav" aria-label="Menü">
-        <a href="#menu" data-t="menu">Menü</a>
-        <a href="#moods" data-t="moodsNav">Ruh haline göre</a>
+        <a href="./" data-nav="home" data-t="home">Ana sayfa</a>
+        <a href="?screen=menu" data-nav="menu" data-t="menu">Menü</a>
+        <a href="./#visit" data-nav="visit" data-t="visit">Kafeyi keşfet</a>
         <button type="button" class="text-button" data-view-link="pair" data-t="pairNav">Tatlı eşleşmeler</button>
       </nav>
       <div class="header-actions">
@@ -28,20 +29,44 @@
       </div>
     </div>
   </header>
-  <main id="main" class="wrap">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
+  <main id="main" class="wrap" tabindex="-1">
+    <div id="landing">
+    <section class="landing-hero" aria-labelledby="hero-title">
+      <figure class="landing-photo">
+        <img src="assets/grand-rocher-editorial.webp" alt="Grand Rocher Cup" width="1280" height="853" fetchpriority="high" decoding="async">
+        <figcaption>Grand Rocher Cup</figcaption>
+      </figure>
+      <div class="landing-copy">
         <p class="eyebrow"><span data-icon="spark"></span><span data-t="heroKicker">BELÇİKA ÇİKOLATASI</span></p>
-        <h1 id="hero-title"><span data-t="hero1">Bir dünya</span><em data-t="hero2">mutluluk.</em></h1>
-        <p class="hero-lead" data-t="heroText">Belçika çikolatası, taze tatlılar ve sana iyi gelen küçük bir mola.</p>
-        <button class="hero-cta" type="button" id="hero-add"><span data-icon="plus"></span><span data-t="heroAdd">Sepete ekle</span><strong id="hero-price"></strong></button>
-      </div>
-      <div class="hero-photo">
-        <img id="hero-img" src="assets/69d0222c0dbc4f83db49c90a.webp" alt="Grand Rocher Cup" width="720" height="477" fetchpriority="high">
-        <button class="hero-item" type="button" id="hero-item"><strong id="hero-name"></strong><span data-icon="arrow"></span></button>
+        <h1 id="hero-title" tabindex="-1"><span data-t="hero1">Çikolataya</span><em data-t="hero2">bir mola.</em></h1>
+        <p data-t="heroText">Çikolata Evim'de Belçika çikolatalı tatlılar, waffle ve kahve.</p>
+        <a class="primary landing-cta" href="?screen=menu" data-nav="menu"><span data-t="explore">Menüyü keşfet</span><span data-icon="arrow"></span></a>
+        <a class="landing-secondary" href="#visit"><span data-t="visit">Kafeyi keşfet</span><span data-icon="down"></span></a>
       </div>
     </section>
 
+    <section class="visit section" id="visit" aria-labelledby="visit-title">
+      <figure class="visit-photo">
+        <img src="assets/cafe-interior.webp" width="1050" height="700" alt="Çikolata Evim" loading="lazy" decoding="async">
+        <figcaption><a href="https://www.allesofis.com/cikolata-evim/" rel="noopener" target="_blank">Alles Ofis</a></figcaption>
+      </figure>
+      <div class="visit-copy">
+        <h2 id="visit-title" data-t="visitTitle">Kendine tatlı bir mola ver.</h2>
+        <p data-t="visitText">Kahveni burada yudumla veya sevdiğin tatlıyı yanında götür.</p>
+        <form id="visit-form">
+          <fieldset class="visit-options">
+            <legend class="sr-only" data-t="fulfillment">Servis tercihi</legend>
+            <label><input type="radio" name="service" value="here" checked><span data-t="here">Kafede</span></label>
+            <label><input type="radio" name="service" value="takeaway"><span data-t="takeaway">Paket</span></label>
+          </fieldset>
+          <button class="primary" type="submit"><span data-t="explore">Menüyü keşfet</span><span data-icon="arrow"></span></button>
+        </form>
+        <a class="visit-locations" href="https://cikolataevim.com/pages/magazalar" target="_blank" rel="noopener"><span data-t="locations">Mağazaları bul</span><span data-icon="external"></span></a>
+      </div>
+    </section>
+    </div>
+
+    <div id="menu-page" hidden>
     <section class="moods section" id="moods" aria-labelledby="mood-title">
       <div class="section-head">
         <h2 id="mood-title" data-t="moodTitle">Bugün modun nasıl?</h2>
@@ -52,7 +77,7 @@
 
     <section class="section menu-section" id="menu" aria-labelledby="menu-title">
       <div class="section-head menu-head">
-        <h2 id="menu-title" data-t="menuTitle">Kafe menüsü</h2>
+        <h1 id="menu-title" tabindex="-1" data-t="menuTitle">Kafe menüsü</h1>
         <div class="menu-actions">
           <label class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Menüde ara" aria-label="Menüde ara" autocomplete="off"></label>
           <button type="button" class="save-filter icon-button" id="save-filter" data-saved aria-pressed="false"><span data-icon="heart"></span><span class="sr-only" data-t="favorites">Favoriler</span></button>
@@ -62,15 +87,19 @@
         <div class="categories" id="categories" role="group" aria-label="Kategoriler"></div>
         <div class="views" id="views" role="group" aria-label="Görünüm"></div>
       </div>
-      <p id="result-count" class="result-count" aria-live="polite"></p>
+      <div class="catalog-meta">
+        <p id="result-count" class="result-count" aria-live="polite"></p>
+        <span id="local-activity" class="result-count" data-t="localActivity">Bu cihazdaki etkinlik</span>
+      </div>
       <div id="catalog"></div>
       <div id="more-row" class="more-row" hidden><button type="button" class="secondary" id="more" data-t="more">Daha fazla göster</button></div>
-      <noscript><p>Menüyü görmek için JavaScript'i etkinleştirin veya aşağıdaki QR menüyü açın.</p></noscript>
     </section>
+    </div>
+    <noscript><p><a href="https://qr.finedinemenu.com/cikolata-evim-2/menu/69d0222b0dbc4f83db49c74f">Orijinal QR menüyü açın</a></p></noscript>
   </main>
   <footer class="footer">
     <div class="wrap footer-inner">
-      <a class="brand" href="./" aria-label="Çikolata Evim"><img src="assets/brand.webp" alt="Çikolata Evim" width="360" height="111" loading="lazy"></a>
+      <a class="brand" href="./" data-nav="home" aria-label="Çikolata Evim"><img src="assets/brand.webp" alt="Çikolata Evim" width="360" height="111" loading="lazy"></a>
       <p data-t="demo">Bağımsız menü demosu</p>
       <a id="source" href="https://qr.finedinemenu.com/cikolata-evim-2/menu/69d0222b0dbc4f83db49c74f" target="_blank" rel="noopener"><span data-t="source">Orijinal QR menü</span><span data-icon="external"></span></a>
     </div>
@@ -80,6 +109,7 @@
       <button type="button" data-open-cart><span data-icon="bag"></span><span data-t="reviewCart">Sepeti gör</span><span class="count" data-count>0</span><strong id="float-total"></strong><span data-icon="arrow"></span></button>
     </div>
     <nav class="mobile-nav" aria-label="Menü">
+      <button type="button" data-dock="home"><span data-icon="home"></span><span data-t="home">Ana sayfa</span></button>
       <button type="button" data-dock="menu"><span data-icon="menu"></span><span data-t="menu">Menü</span></button>
       <button type="button" data-dock="pair"><span data-icon="pair"></span><span data-t="pair">Eşleşmeler</span></button>
       <button type="button" data-dock="saved"><span data-icon="heart"></span><span data-t="favorites">Favoriler</span></button>
@@ -87,6 +117,10 @@
     </nav>
   </div>
   <dialog id="detail" aria-labelledby="detail-title"><div id="detail-content"></div></dialog>
+  <dialog id="share-sheet" aria-labelledby="share-title">
+    <div class="drawer-head"><h2 id="share-title" data-t="share">Ürünü paylaş</h2><button type="button" class="icon-button" data-close="share-sheet" aria-label="Kapat"><span data-icon="close"></span></button></div>
+    <div class="share-body"><input id="share-link" class="share-link" readonly type="url" aria-label="Ürün bağlantısı"><p class="share-status" id="share-status" role="status"></p></div>
+  </dialog>
   <dialog id="basket" class="basket" aria-labelledby="basket-title">
     <header class="drawer-head"><h2 id="basket-title" data-t="cart">Sepet</h2><button type="button" class="icon-button" data-close="basket" aria-label="Kapat"><span data-icon="close"></span></button></header>
     <div id="basket-content"></div>
