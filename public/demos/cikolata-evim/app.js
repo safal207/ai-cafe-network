@@ -353,13 +353,14 @@ function recordActivity(id, kind) {
   const entry = activity.get(id) || {views:0,shares:0};
   entry[kind] = Math.min(Number.MAX_SAFE_INTEGER, entry[kind]+1);
   activity.set(id,entry);
-  const counter = $(`[data-${kind}="${id}"]`);
-  if (counter) {
+  // Cards can appear in the landing stories and catalog simultaneously.
+  // Keep all visible and off-screen counters synchronized.
+  document.querySelectorAll(`[data-${kind}="${id}"]`).forEach((counter)=>{
     counter.textContent = entry[kind];
     const parent = counter.parentElement;
     const name = byId.get(id).name;
     parent.setAttribute("aria-label",`${t(kind==="views" ? "viewsCount" : "share")} · ${name} · ${entry[kind]}`);
-  }
+  });
   persist();
 }
 function recordView(id) {
