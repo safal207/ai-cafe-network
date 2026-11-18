@@ -80,11 +80,16 @@
 
     <div id="menu-page" hidden>
     <section class="moods section" id="moods" aria-labelledby="mood-title">
-      <div class="section-head">
-        <h2 id="mood-title" data-t="moodTitle">Bugün modun nasıl?</h2>
-        <button class="clear-mood text-button" type="button" data-mood-choice="all" hidden data-t="clearMood">Seçimi kaldır</button>
-      </div>
-      <div id="mood-options" class="mood-options"></div>
+      <details class="mood-disclosure" id="mood-disclosure">
+        <summary><span data-t="moodSummary">Moduna göre seç</span><span class="mood-summary-icon" aria-hidden="true">+</span></summary>
+        <div class="mood-inner">
+          <div class="section-head">
+            <h2 id="mood-title" data-t="moodTitle">Bugün modun nasıl?</h2>
+            <button class="clear-mood text-button" type="button" data-mood-choice="all" hidden data-t="clearMood">Seçimi kaldır</button>
+          </div>
+          <div id="mood-options" class="mood-options"></div>
+        </div>
+      </details>
     </section>
 
     <section class="section menu-section" id="menu" aria-labelledby="menu-title">
