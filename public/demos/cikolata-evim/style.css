@@ -519,3 +519,72 @@ dialog::backdrop {background:#061735a6}
   .mood-inner .section-head {align-items:center}
   .mood-inner .section-head h2 {font-size:1.45rem}
 }
+
+/* Original Çikolata Evim wordmark, legible on every food photograph.
+   Do not substitute the AI-generated blue cup or house logos. */
+:root { --brand-chocolate:#4a292c; --brand-cream:#fffaf5; }
+.header {border-bottom-color:#e9dfd9;box-shadow:0 2px 13px #34181b0b}
+.header-inner {height:82px}
+.brand img {width:176px;height:auto}
+.brand:focus-visible {border-radius:8px}
+.brand-stamp {
+  position:absolute;
+  z-index:2;
+  top:13px;left:13px;
+  display:flex;align-items:center;justify-content:center;
+  width:132px;max-width:calc(100% - 95px);
+  padding:9px 12px;
+  border:1px solid #fff9;
+  border-radius:11px;
+  background:rgba(255,250,245,.96);
+  box-shadow:0 6px 24px #080e1c30;
+  pointer-events:none;
+}
+.brand-stamp img {
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:360 / 111;
+  object-fit:contain;
+  filter:none !important;
+}
+.hero-brand-stamp {top:20px;left:20px;width:166px;max-width:calc(100% - 40px)}
+.visit-brand-stamp {top:15px;left:15px;width:134px;max-width:calc(100% - 30px)}
+.story-photo .brand-stamp {top:14px;left:14px;width:126px}
+.feed .product-photo .brand-stamp {top:18px;left:18px;width:135px}
+.photo .product-photo .brand-stamp {
+  top:7px;left:7px;width:91px;max-width:calc(100% - 60px);
+  padding:5px 6px;border-radius:7px;
+}
+.detail-media .brand-stamp {top:11px;left:11px;width:138px}
+.pair-photos .brand-stamp {top:12px;left:12px;width:120px}
+.photo-grade {
+  --color:1.085;
+  --warm:.018;
+  --light:1.018;
+  filter:sepia(var(--warm)) saturate(var(--color)) contrast(1.045) brightness(var(--light));
+}
+.photo-grade.cold {--color:1.10;--warm:0;--light:1.025}
+.photo-grade.coffee {--color:1.06;--warm:.035}
+.photo-grade.gift {--color:1.04;--warm:0}
+/* Keep real image textures: no artificial sharpen filter or invented ingredient layers. */
+@media(max-width:1050px) {
+  .brand img {width:160px}
+}
+@media(max-width:640px) {
+  .header-inner {height:69px}
+  .brand img {width:144px}
+  .header-actions {gap:5px}
+  .brand-stamp {top:10px;left:10px;padding:7px 9px;width:116px;border-radius:9px}
+  .hero-brand-stamp {width:133px;max-width:calc(100% - 22px)}
+  .visit-brand-stamp {width:118px}
+  .story-photo .brand-stamp {top:12px;left:12px;width:114px}
+  .feed .product-photo .brand-stamp {top:13px;left:13px;width:114px}
+  .detail-media .brand-stamp {width:112px}
+  .pair-photos .brand-stamp {width:109px}
+  .photo .product-photo .brand-stamp {width:84px;max-width:calc(100% - 20px)}
+}
+@media(max-width:350px) {
+  .brand img {width:130px}
+  .header-inner {gap:5px}
+}
