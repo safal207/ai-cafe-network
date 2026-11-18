@@ -11,48 +11,51 @@ const $ = (selector) => document.querySelector(selector);
 const copy = {
   tr: {
     skip:"Menüye geç",menu:"Menü",moodsNav:"Ruh haline göre",pairNav:"Tatlı eşleşmeler",cart:"Sepet",
-    heroKicker:"ÇİKOLATA EVİM",hero1:"Bir dünya",hero2:"mutluluk.",heroText:"Belçika çikolatası, taze tatlılar ve sana iyi gelen küçük bir mola.",
-    explore:"Menüyü keşfet",heroProduct:"Fotoğraftaki tatlı",moodTitle:"Bugün modun nasıl?",moodText:"Bir ruh hali seç, sana uygun tatlıları ve içecekleri bul.",clearMood:"Seçimi kaldır",
+    heroKicker:"BELÇİKA ÇİKOLATASI",hero1:"Bir dünya",hero2:"mutluluk.",heroText:"Tatlı ve kahveyle küçük bir mola.",
+    explore:"Menüyü keşfet",heroAdd:"Sepete ekle",moodTitle:"Bugün modun nasıl?",clearMood:"Seçimi kaldır",
     menuTitle:"Kafe menüsü",chocolateTitle:"Çikolatalarımız", all:"Tümü",cafe:"Kafe",chocolate:"Çikolata",search:"Menüde ara",favorites:"Favoriler",
     categories:"Kategoriler",views:"Görünüm",feed:"Akış",photo:"Fotoğraf",list:"Liste",pair:"Eşleşmeler",more:"Daha fazla göster",
     demo:"Bağımsız menü demosu",source:"Orijinal QR menü",items:"ürün",pairs:"eşleşme",empty:"Bu seçimle eşleşen ürün bulunamadı.",reset:"Filtreleri sıfırla",
     noPrice:"Fiyatı sorun",confirmAtCafe:"Fiyatı veya ürün seçeneğini personelden teyit edin.",soldByWeight:"Tartılarak satılır. Menüdeki ölçüyü ve fiyatı personelden teyit edin.",
     add:"Sepete ekle",options:"Seçenekleri gör",option:"Seçeneğini seç",open:"Ürün detayları",close:"Kapat",save:"Favorilere ekle",unsave:"Favorilerden çıkar",
     added:"Sepete eklendi",pairAdded:"İkisi de sepete eklendi",limit:"Ürün başına en fazla 30 adet eklenebilir.",removeOne:"Bir adet azalt",addOne:"Bir adet artır",
-    emptyCart:"Sepetin boş. Menüden bir tatlı veya içecek seçebilirsin.",total:"Toplam",suitable:"Yanında iyi gider",pairHint:"İki ürünü tek dokunuşla sepete ekle.",
-    addPair:"İkisini ekle",staff:"Personel için listeyi aç",staffNote:"Listeni sipariş için personelle paylaşabilirsin.",copyOrder:"Listeyi kopyala",copied:"Liste kopyalandı",
+    emptyCart:"Sepetin boş. Menüden bir tatlı veya içecek seçebilirsin.",total:"Toplam",suitable:"Yanında iyi gider",reviewCart:"Sepeti gör",
+    addPair:"İkisini ekle",staff:"Personel için listeyi aç",staffNote:"Sipariş ve ödeme kafede.",copyOrder:"Listeyi kopyala",copied:"Liste kopyalandı",
+    fulfillment:"Servis tercihi",here:"Kafede",takeaway:"Paket",share:"Ürünü paylaş",linkCopied:"Bağlantı kopyalandı",copyLink:"Ürün bağlantısını kopyala",
     pick:["Çilek zamanı","Kahve molası","Serinle","Kutlama"],pickNote:["Meyveli & çikolatalı","Sıcak & yumuşak","Buzlu & ferah","Paylaşmalık tatlar"],
     pairNames:["Klasik mola","Çilekli serinlik","Çikolata ve kahve","Çıtır ve buzlu","Birlikte daha güzel","Fıstıklı mola"],
     ingredients:"Menüdeki açıklama (Türkçe)", itemLink:"QR menüde aç"
   },
   ru: {
     skip:"Перейти к меню",menu:"Меню",moodsNav:"По настроению",pairNav:"Вкусные пары",cart:"Корзина",
-    heroKicker:"ÇİKOLATA EVİM",hero1:"Целый мир",hero2:"счастья.",heroText:"Бельгийский шоколад, свежие десерты и маленькая пауза для себя.",
-    explore:"Смотреть меню",heroProduct:"Десерт на фото",moodTitle:"Какое сегодня настроение?",moodText:"Выбери настроение, чтобы найти десерт или напиток.",clearMood:"Сбросить",
+    heroKicker:"БЕЛЬГИЙСКИЙ ШОКОЛАД",hero1:"Целый мир",hero2:"счастья.",heroText:"Пауза для десерта и кофе.",
+    explore:"Смотреть меню",heroAdd:"Добавить",moodTitle:"Какое сегодня настроение?",clearMood:"Сбросить",
     menuTitle:"Меню кафе",chocolateTitle:"Шоколад и подарки",all:"Все",cafe:"Кафе",chocolate:"Шоколад",search:"Поиск по меню",favorites:"Избранное",
     categories:"Категории",views:"Режим меню",feed:"Лента",photo:"Фото",list:"Список",pair:"Пары",more:"Показать ещё",
     demo:"Независимая демоверсия меню",source:"Исходное QR-меню",items:"позиций",pairs:"сочетаний",empty:"По этим фильтрам ничего не нашлось.",reset:"Сбросить фильтры",
     noPrice:"Уточнить цену",confirmAtCafe:"Уточни цену или вариант у персонала.",soldByWeight:"Продаётся на вес. Уточни единицу и цену у персонала.",
     add:"В корзину",options:"Выбрать вариант",option:"Выбери вариант",open:"Открыть карточку",close:"Закрыть",save:"В избранное",unsave:"Убрать из избранного",
     added:"Добавлено в корзину",pairAdded:"Обе позиции в корзине",limit:"Можно добавить до 30 единиц каждой позиции.",removeOne:"Уменьшить на одну",addOne:"Увеличить на одну",
-    emptyCart:"Корзина пока пуста. Выбери десерт или напиток в меню.",total:"Итого",suitable:"Подойдёт к заказу",pairHint:"Добавь обе позиции в корзину одним нажатием.",
-    addPair:"Добавить оба",staff:"Показать список персоналу",staffNote:"Покажи свой список персоналу, чтобы оформить заказ.",copyOrder:"Скопировать список",copied:"Список скопирован",
+    emptyCart:"Корзина пока пуста. Выбери десерт или напиток в меню.",total:"Итого",suitable:"Подойдёт к заказу",reviewCart:"К корзине",
+    addPair:"Добавить оба",staff:"Показать список персоналу",staffNote:"Заказ и оплата в кафе.",copyOrder:"Скопировать список",copied:"Список скопирован",
+    fulfillment:"Как подать",here:"В кафе",takeaway:"С собой",share:"Поделиться позицией",linkCopied:"Ссылка скопирована",copyLink:"Скопируй ссылку на позицию",
     pick:["Клубничное","Кофейная пауза","Освежиться","Праздник"],pickNote:["Ягоды и шоколад","Тёплое и уютное","Со льдом и свежестью","Чтобы поделиться"],
     pairNames:["Классическая пауза","Ягодная свежесть","Шоколад и кофе","Хруст и лёд","На двоих","Фисташковая пауза"],
     ingredients:"Описание из меню (на турецком)",itemLink:"Открыть в QR-меню"
   },
   en: {
     skip:"Skip to menu",menu:"Menu",moodsNav:"By mood",pairNav:"Sweet pairings",cart:"Basket",
-    heroKicker:"ÇİKOLATA EVİM",hero1:"A world of",hero2:"happiness.",heroText:"Belgian chocolate, fresh desserts and a little break for yourself.",
-    explore:"Explore the menu",heroProduct:"Dessert pictured",moodTitle:"What's your mood today?",moodText:"Pick a mood to find a dessert or a drink.",clearMood:"Clear mood",
+    heroKicker:"BELGIAN CHOCOLATE",hero1:"A world of",hero2:"happiness.",heroText:"A little break for dessert and coffee.",
+    explore:"Explore the menu",heroAdd:"Add to basket",moodTitle:"What's your mood today?",clearMood:"Clear mood",
     menuTitle:"Café menu",chocolateTitle:"Chocolates & gifts",all:"All",cafe:"Café",chocolate:"Chocolate",search:"Search the menu",favorites:"Favorites",
     categories:"Categories",views:"Menu view",feed:"Feed",photo:"Photos",list:"List",pair:"Pairs",more:"Show more",
     demo:"Independent menu demo",source:"Original QR menu",items:"items",pairs:"pairings",empty:"No products match these filters.",reset:"Reset filters",
     noPrice:"Ask for price",confirmAtCafe:"Check the price or available options with staff.",soldByWeight:"Sold by weight. Ask staff to confirm the unit and price.",
     add:"Add to basket",options:"Choose option",option:"Choose an option",open:"View product details",close:"Close",save:"Add to favorites",unsave:"Remove from favorites",
     added:"Added to basket",pairAdded:"Both items added",limit:"You can add up to 30 of each item.",removeOne:"Remove one",addOne:"Add one",
-    emptyCart:"Your basket is empty. Choose a dessert or drink from the menu.",total:"Total",suitable:"Goes well with your basket",pairHint:"Add both items to your basket in one tap.",
-    addPair:"Add both",staff:"Show list to staff",staffNote:"Show this list to the staff to place your order.",copyOrder:"Copy the list",copied:"List copied",
+    emptyCart:"Your basket is empty. Choose a dessert or drink from the menu.",total:"Total",suitable:"Goes well with your basket",reviewCart:"View basket",
+    addPair:"Add both",staff:"Show list to staff",staffNote:"Order and pay at the café.",copyOrder:"Copy the list",copied:"List copied",
+    fulfillment:"Service preference",here:"Dine in",takeaway:"Takeaway",share:"Share item",linkCopied:"Link copied",copyLink:"Copy the item link",
     pick:["Berry mood","Coffee break","Cool down","Celebrate"],pickNote:["Berries & chocolate","Warm & mellow","Icy & refreshing","Made for sharing"],
     pairNames:["Classic break","Berry refresh","Chocolate & coffee","Crisp & iced","Better together","Pistachio break"],
     ingredients:"Menu description (Turkish)",itemLink:"Open in QR menu"
@@ -72,18 +75,20 @@ const paths = {
   search:'<circle cx="10.8" cy="10.8" r="6.3"/><path d="m15.5 15.5 4 4"/>',
   external:'<path d="M13 5h6v6m0-6-9 9m7-1v6H5V7h6"/>',
   feed:'<rect x="4" y="4" width="16" height="7" rx="1"/><rect x="4" y="14" width="16" height="6" rx="1"/>',
+  menu:'<rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 8h6m-6 4h6m-6 4h4"/>',
   photo:'<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 15l4-4 4 4 3-3 5 5"/><circle cx="15" cy="8" r="1"/>',
   list:'<path d="M9 6h11M9 12h11M9 18h11M4 6h1M4 12h1M4 18h1"/>',
   pair:'<circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/>',
   plus:'<path d="M12 5v14M5 12h14"/>',
   minus:'<path d="M5 12h14"/>',
   close:'<path d="m6 6 12 12M6 18 18 6"/>',
-  globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17m-8.5-8.5c5 4 5 13 0 17-5-4-5-13 0-17Z"/>'
+  globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17m-8.5-8.5c5 4 5 13 0 17-5-4-5-13 0-17Z"/>',
+  share:'<path d="M12 15V3m-4 4 4-4 4 4M6 10H4v10h16V10h-2"/>'
 };
 
 const icons = (name) => `<svg aria-hidden="true" viewBox="0 0 24 24">${paths[name]}</svg>`;
 const escape = (value) => String(value).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
-const money = (cents, locale = state.lang) => new Intl.NumberFormat({tr:"tr-TR",ru:"ru-RU",en:"en-GB"}[locale], {style:"currency",currency:"TRY",minimumFractionDigits:cents % 100 ? 2 : 0,maximumFractionDigits:2}).format(cents / 100);
+const money = (cents, locale = state.lang) => "₺" + new Intl.NumberFormat({tr:"tr-TR",ru:"ru-RU",en:"en-GB"}[locale], {minimumFractionDigits:cents % 100 ? 2 : 0,maximumFractionDigits:2}).format(cents / 100);
 const safeRead = () => {
   try { return JSON.parse(localStorage.getItem(storageKey)) || {}; } catch { return {}; }
 };
@@ -124,7 +129,7 @@ const state = {
   category:params.has("category") && validCategory(Number(params.get("category"))) ? Number(params.get("category")) : "all",
   query:"",savedOnly:false,limit:pageSize,
   saved:new Set(Array.isArray(stored.saved) ? stored.saved.filter((id)=>byId.has(id)) : []),
-  cart:{},detail:null,option:0,staff:false
+  cart:{},detail:null,option:0,staff:false,service:stored.service==="takeaway" ? "takeaway" : "here"
 };
 if (state.category !== "all") state.collection = SOURCE_MENU.categories[state.category][1];
 const itemKey = (id, index) => `${id}.${index}`;
@@ -146,7 +151,7 @@ function notify(message) {
 }
 function persist() {
   try {
-    localStorage.setItem(storageKey, JSON.stringify({lang:state.lang,view:state.view,mood:state.mood,cart:state.cart,saved:[...state.saved]}));
+    localStorage.setItem(storageKey, JSON.stringify({lang:state.lang,view:state.view,mood:state.mood,cart:state.cart,saved:[...state.saved],service:state.service}));
   } catch { /* Current selections remain available for this visit. */ }
 }
 function syncUrl() {
@@ -189,6 +194,7 @@ function paintInterface() {
   document.documentElement.lang = state.lang;
   document.querySelectorAll("[data-t]").forEach((el)=> { el.textContent = t(el.dataset.t); });
   document.querySelector(".top-nav").setAttribute("aria-label",t("menu"));
+  document.querySelector(".mobile-nav").setAttribute("aria-label",t("menu"));
   $("#search").placeholder = t("search");
   $("#search").setAttribute("aria-label",t("search"));
   $("#categories").setAttribute("aria-label",t("categories"));
@@ -202,14 +208,12 @@ function paintInterface() {
 }
 function renderHero() {
   const hero = byName.get("Grand Rocher Cup");
-  const heroImage = $("#hero-img");
-  if (!heroImage.hasAttribute("src")) {
-    heroImage.src = hero.image;
-    heroImage.dataset.imageFallback = hero.photo;
-    heroImage.alt = hero.name;
-  }
+  $("#hero-img").dataset.imageFallback = hero.photo;
   $("#hero-item").dataset.detail = hero.id;
   $("#hero-name").textContent = hero.name;
+  $("#hero-add").dataset.add = hero.id;
+  $("#hero-add").setAttribute("aria-label",`${t("heroAdd")} · ${hero.name} · ${money(hero.choices[0][1])}`);
+  $("#hero-price").textContent = money(hero.choices[0][1]);
 }
 function renderMood() {
   document.documentElement.dataset.mood = state.mood;
@@ -226,13 +230,13 @@ function renderFilters() {
   const focus = document.activeElement?.dataset;
   const button = (kind,value,label,active)=>`<button type="button" data-${kind}="${value}" aria-pressed="${active}">${escape(label)}</button>`;
   $("#categories").innerHTML = `
-    ${button("collection","cafe",t("cafe"),state.collection==="cafe")}
-    ${button("collection","chocolate",t("chocolate"),state.collection==="chocolate")}
+    ${button("collection","cafe",t("cafe"),!state.savedOnly && state.collection==="cafe")}
+    ${button("collection","chocolate",t("chocolate"),!state.savedOnly && state.collection==="chocolate")}
     ${button("category","all",t("all"),state.category==="all")}
     ${SOURCE_MENU.categories.map(([,collection],index)=> collection === state.collection ? button("category",index,categoryName(index),state.category===index) : "").join("")}`;
   $("#views").innerHTML = ["feed","photo","list","pair"].map((view)=>
     `<button type="button" data-view="${view}" aria-pressed="${state.view===view}">${icons(view)}<span>${t(view)}</span></button>`).join("");
-  $("#menu-title").textContent = state.view==="pair" ? t("pairNav") : state.collection==="cafe" ? t("menuTitle") : t("chocolateTitle");
+  $("#menu-title").textContent = state.savedOnly ? t("favorites") : state.view==="pair" ? t("pairNav") : state.collection==="cafe" ? t("menuTitle") : t("chocolateTitle");
   $("#save-filter").setAttribute("aria-pressed",state.savedOnly);
   for (const key of ["category","collection","view"]) {
     if (focus?.[key] !== undefined) $(`[data-${key}="${focus[key]}"]`)?.focus({preventScroll:true});
@@ -263,7 +267,7 @@ function productCard(p) {
 }
 function renderProducts() {
   const products = state.mood === "all" ? [...featured,...menu.filter((p)=>!featured.includes(p))] : moods[state.mood].map((name)=>byName.get(name));
-  const filtered = products.filter((p)=>SOURCE_MENU.categories[p.category][1]===state.collection && matchesOtherFilters(p));
+  const filtered = products.filter((p)=>(state.savedOnly || SOURCE_MENU.categories[p.category][1]===state.collection) && matchesOtherFilters(p));
   $("#result-count").textContent = `${filtered.length} ${t("items")}`;
   $("#more-row").hidden = filtered.length <= state.limit;
   return filtered.length ? `<div class="products ${state.view}">${filtered.slice(0,state.limit).map(productCard).join("")}</div>` : emptyResults();
@@ -291,6 +295,14 @@ function renderMenu() {
   const favoriteFocus = document.activeElement?.dataset.favorite;
   $("#catalog").innerHTML = state.view==="pair" ? renderPairs() : renderProducts();
   if (favoriteFocus) $("#catalog [data-favorite='" + favoriteFocus + "']")?.focus({preventScroll:true});
+  renderDock();
+}
+function renderDock() {
+  const area = $("#basket").open ? "cart" : state.savedOnly ? "saved" : state.view==="pair" ? "pair" : "menu";
+  document.querySelectorAll(".mobile-nav [data-dock]").forEach((button)=> {
+    if (button.dataset.dock===area) button.setAttribute("aria-current","true");
+    else button.removeAttribute("aria-current");
+  });
 }
 function renderDetail() {
   const p = byId.get(state.detail);
@@ -300,6 +312,7 @@ function renderDetail() {
       `<option value="${i}"${state.option===i ? " selected" : ""}>${escape(name)} · ${money(cents)}</option>`).join("")}</select></label>` : "";
   $("#detail-content").innerHTML = `<div class="detail-media">${img(p,p.name,true)}
       <div class="detail-controls">
+        <button type="button" class="icon-button" data-share aria-label="${t("share")}">${icons("share")}</button>
         <button type="button" class="icon-button" data-favorite="${p.id}" aria-label="${labelAction(isSaved ? "unsave" : "save",p.name)}" aria-pressed="${isSaved}">${icons("heart")}</button>
         <button type="button" class="icon-button" data-close="detail" aria-label="${t("close")}" autofocus>${icons("close")}</button>
       </div>
@@ -309,6 +322,7 @@ function renderDetail() {
       ${options}
       ${price === undefined ? `<p>${t(p.byWeight ? "soldByWeight" : "confirmAtCafe")}</p><div class="detail-foot"><strong>${shownPrice(p)}</strong></div>`
       : `<button type="button" class="primary" id="detail-add" data-add="${p.id}" data-index="${state.option}"><span>${t("add")}</span><strong>${money(price)}</strong></button>`}
+      <p class="share-status" role="status" id="share-status"></p><input type="url" readonly hidden class="share-link" id="share-link" aria-label="${t("copyLink")}">
       <a class="text-button detail-foot" href="${SOURCE_MENU.categories[p.category][1] === "cafe" ? sourceUrl : chocolateSourceUrl}/detail/${p.id}" target="_blank" rel="noopener">${t("itemLink")}${icons("external")}</a>
     </div>`;
 }
@@ -322,31 +336,37 @@ function cartEntries() {
 }
 function suggest(entries) {
   const ids = new Set(entries.map(({p})=>p.id));
+  const hasDessert = entries.some(({p})=>p.category<7);
+  const hasDrink = entries.some(({p})=>p.category===7 || p.category===8);
+  if (hasDessert === hasDrink) return null;
   for (const {products:[a,b]} of pairings) {
     if (ids.has(a.id) && !ids.has(b.id)) return b;
     if (ids.has(b.id) && !ids.has(a.id)) return a;
   }
-  const fallback = entries.some(({p})=>p.category<7) ? "Capuccino" : "Begonya";
-  const candidate = byName.get(fallback);
-  return ids.has(candidate.id) ? null : candidate;
+  return byName.get(hasDessert ? "Capuccino" : "Begonya");
 }
 function renderCart() {
   const entries = cartEntries();
   const count = entries.reduce((sum,e)=>sum+e.quantity,0);
   const total = entries.reduce((sum,e)=>sum+e.quantity*e.cents,0);
-  document.querySelectorAll("[data-count]").forEach((el)=>{el.textContent=count;});
+  document.querySelectorAll("[data-count]").forEach((el)=> {
+    el.textContent=count;
+    if (el.classList.contains("nav-count")) el.hidden = count===0;
+  });
   $("#floating-cart").hidden = count === 0;
   $("#float-total").textContent = money(total);
+  renderDock();
   if (!$("#basket").open) return;
   const focus = document.activeElement?.dataset;
+  const scroll = $(".basket-body")?.scrollTop ?? 0;
   if (!count) {
     state.staff = false;
-    $("#basket-content").innerHTML = `<p class="cart-note">${t("emptyCart")}</p><button type="button" class="primary cart-cta" data-close="basket">${t("explore")}${icons("arrow")}</button>`;
+    $("#basket-content").innerHTML = `<div class="basket-empty"><p class="cart-note">${t("emptyCart")}</p><button type="button" class="primary cart-cta" data-dock="menu" data-browse>${t("explore")}${icons("arrow")}</button></div>`;
     if (focus?.qty) $(".cart-cta").focus({preventScroll:true});
     return;
   }
   const suggestion = suggest(entries);
-  const summary = ["Çikolata Evim · Sipariş listesi",...entries.map(({quantity,p,cents,option})=>
+  const summary = ["Çikolata Evim · Sipariş listesi",copy.tr[state.service],...entries.map(({quantity,p,cents,option})=>
     `${quantity} × ${p.name}${option ? " — " + option : ""} · ${money(quantity*cents,"tr")}`),
     "Toplam: " + money(total,"tr")].join("\n");
   const line = ({key,p,option,cents,quantity})=>`<div class="cart-line">${img(p)}
@@ -355,14 +375,28 @@ function renderCart() {
       <span>${quantity}</span><button type="button" data-qty="${key}" data-delta="1" aria-label="${labelAction("addOne",p.name)}"${quantity>=maxQuantity ? " disabled" : ""}>${icons("plus")}</button>
     </div></div>`;
   $("#basket-content").innerHTML = `
-    <div>${entries.map(line).join("")}</div>
-    ${suggestion ? `<div class="suggestion">${img(suggestion)}<div><p>${t("suitable")}</p><strong lang="tr">${escape(suggestion.name)}</strong></div>
-    <button class="secondary" type="button" data-add="${suggestion.id}" aria-label="${labelAction("add",suggestion.name)}">+ ${money(suggestion.choices[0][1])}</button></div>` : ""}
-    <p class="total"><strong>${t("total")}</strong><strong id="basket-total">${money(total)}</strong></p>
-    <p class="cart-note">${t("staffNote")}</p>
-    <button type="button" class="primary cart-cta" data-staff>${t(state.staff ? "copyOrder" : "staff")}</button>
-    ${state.staff ? `<textarea rows="${Math.min(count+2,8)}" lang="tr" class="cart-text" id="staff-summary" readonly aria-label="Sipariş listesi">${escape(summary)}</textarea>` : ""}`;
-  if (focus?.qty) $(`[data-qty="${focus.qty}"][data-delta="${focus.delta}"]:not(:disabled)`)?.focus({preventScroll:true});
+    <div class="basket-body">
+      ${entries.map(line).join("")}
+      ${suggestion ? `<div class="suggestion">${img(suggestion)}<div><p>${t("suitable")}</p><strong lang="tr">${escape(suggestion.name)}</strong></div>
+      <button class="secondary" type="button" data-add="${suggestion.id}" aria-label="${labelAction("add",suggestion.name)}">+ ${money(suggestion.choices[0][1])}</button></div>` : ""}
+      <fieldset class="fulfillment"><legend>${t("fulfillment")}</legend>
+        ${["here","takeaway"].map((option)=>`<button type="button" class="secondary" data-service="${option}" aria-pressed="${state.service===option}">${t(option)}</button>`).join("")}
+      </fieldset>
+      ${state.staff ? `<div class="staff-card"><textarea rows="${Math.min(entries.length+3,8)}" lang="tr" class="cart-text" id="staff-summary" readonly aria-label="Sipariş listesi">${escape(summary)}</textarea></div>` : ""}
+    </div>
+    <div class="basket-footer">
+      <p class="total"><strong>${t("total")}</strong><strong id="basket-total">${money(total)}</strong></p>
+      <p class="cart-note">${t("staffNote")}</p>
+      <button type="button" class="primary cart-cta" data-staff>${t(state.staff ? "copyOrder" : "staff")}${icons("arrow")}</button>
+      <p class="basket-status" role="status" id="basket-status"></p>
+    </div>`;
+  $(".basket-body").scrollTop = scroll;
+  if (focus?.qty) {
+    const replacement = $(`[data-qty="${focus.qty}"][data-delta="${focus.delta}"]:not(:disabled)`) || $(".qty button") || $("[data-staff]");
+    replacement.focus({preventScroll:true});
+  }
+  if (focus?.service) $(`[data-service="${focus.service}"]`).focus({preventScroll:true});
+  if (focus?.add) $("[data-staff]").focus({preventScroll:true});
 }
 function addProducts(items, message) {
   const keys = items.map(([p,index])=>itemKey(p.id,index));
@@ -392,17 +426,43 @@ async function showStaff() {
   if (!state.staff) {
     state.staff = true;
     renderCart();
-    $("#staff-summary").focus();
+    $("#staff-summary").focus({preventScroll:true});
+    $("#staff-summary").scrollIntoView({block:"nearest"});
     return;
   }
   const summary = $("#staff-summary");
   try {
     await navigator.clipboard.writeText(summary.value);
-    notify(t("copied"));
+    $("#basket-status").textContent = t("copied");
   } catch {
     summary.focus();
     summary.select();
-    if (document.execCommand("copy")) notify(t("copied"));
+    if (document.execCommand?.("copy")) $("#basket-status").textContent = t("copied");
+  }
+}
+async function shareItem() {
+  const product = byId.get(state.detail);
+  const url = new URL(location.pathname,location.origin);
+  url.searchParams.set("item",product.id);
+  url.searchParams.set("lang",state.lang);
+  if (navigator.share) {
+    try {
+      await navigator.share({title:`${product.name} · Çikolata Evim`,url:url.href});
+      return;
+    } catch (error) {
+      if (error.name === "AbortError") return;
+    }
+  }
+  const status = $("#share-status");
+  try {
+    await navigator.clipboard.writeText(url.href);
+    status.textContent = t("linkCopied");
+  } catch {
+    status.textContent = t("copyLink");
+    const field = $("#share-link");
+    field.value = url.href;
+    field.hidden = false;
+    field.select();
   }
 }
 document.addEventListener("click",(event)=>{
@@ -413,6 +473,26 @@ document.addEventListener("click",(event)=>{
   if (d.openCart !== undefined) {
     state.staff = false;
     $("#basket").showModal();
+    renderCart();
+    return;
+  }
+  if (d.openSearch !== undefined) {
+    $("#menu").scrollIntoView();
+    $("#search").focus({preventScroll:true});
+    return;
+  }
+  if (d.dock) {
+    if (d.browse !== undefined) $("#basket").close();
+    const view = d.dock==="pair" ? "pair" : state.view==="pair" ? "feed" : state.view;
+    changeMenu({view,collection:"cafe",category:"all",mood:"all",query:"",savedOnly:d.dock==="saved"});
+    $("#search").value="";
+    $("#menu").scrollIntoView();
+    return;
+  }
+  if (d.share !== undefined) { void shareItem(); return; }
+  if (d.service) {
+    state.service = d.service;
+    persist();
     renderCart();
     return;
   }
@@ -456,7 +536,7 @@ document.addEventListener("click",(event)=>{
     $("#search").value="";
     return;
   }
-  if (d.collection) { changeMenu({collection:d.collection,category:"all",mood:"all",view:state.view==="pair" && d.collection==="chocolate" ? "photo" : state.view}); return; }
+  if (d.collection) { changeMenu({collection:d.collection,category:"all",mood:"all",savedOnly:false,view:state.view==="pair" && d.collection==="chocolate" ? "photo" : state.view}); return; }
   if (d.category !== undefined) { changeMenu({category:d.category==="all" ? "all" : Number(d.category),mood:"all"}); return; }
   if (d.view || d.viewLink) {
     const view=d.view||d.viewLink;
@@ -507,4 +587,12 @@ for (const dialog of document.querySelectorAll("dialog")) {
 }
 document.querySelectorAll("[data-icon]").forEach((el)=>{el.innerHTML=icons(el.dataset.icon);});
 $("#lang-icon").innerHTML=icons("globe");
+$("#basket").addEventListener("close",renderDock);
+$("#detail").addEventListener("close",()=>{
+  const url = new URL(location.href);
+  if (!url.searchParams.has("item")) return;
+  url.searchParams.delete("item");
+  history.replaceState(null,"",url);
+});
 paintInterface();
+if (byId.has(params.get("item"))) openDetail(params.get("item"));

@@ -2,14 +2,14 @@
 <html lang="tr" data-mood="all">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f3ea">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f8ff">
   <meta name="description" content="Çikolata Evim menüsünü keşfedin. Tatlı, kahve ve çikolatalı eşleşmeleri ruh halinize göre seçin.">
   <title>Çikolata Evim · Dijital Menü</title>
   <link rel="icon" href="assets/brand.webp" type="image/webp">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
   <script src="menu.js" defer></script>
-  <script src="app.js" defer></script>
+  <script src="app.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip" href="#menu" data-t="skip">Menüye geç</a>
@@ -22,6 +22,7 @@
         <button type="button" class="text-button" data-view-link="pair" data-t="pairNav">Tatlı eşleşmeler</button>
       </nav>
       <div class="header-actions">
+        <button class="icon-button header-search" type="button" data-open-search><span data-icon="search"></span><span class="sr-only" data-t="search">Menüde ara</span></button>
         <label class="language"><span id="lang-icon" aria-hidden="true"></span><select id="lang" aria-label="Dil / Language / Язык"><option value="tr">TR</option><option value="ru">RU</option><option value="en">EN</option></select></label>
         <button class="cart-button" type="button" data-open-cart><span data-icon="bag"></span><span data-t="cart">Sepet</span><span class="count" data-count>0</span></button>
       </div>
@@ -30,20 +31,20 @@
   <main id="main" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span data-icon="spark"></span><span data-t="heroKicker">ÇİKOLATA EVİM</span></p>
+        <p class="eyebrow"><span data-icon="spark"></span><span data-t="heroKicker">BELÇİKA ÇİKOLATASI</span></p>
         <h1 id="hero-title"><span data-t="hero1">Bir dünya</span><em data-t="hero2">mutluluk.</em></h1>
         <p class="hero-lead" data-t="heroText">Belçika çikolatası, taze tatlılar ve sana iyi gelen küçük bir mola.</p>
-        <a class="hero-cta" href="#menu"><span data-t="explore">Menüyü keşfet</span><span data-icon="arrow"></span></a>
+        <button class="hero-cta" type="button" id="hero-add"><span data-icon="plus"></span><span data-t="heroAdd">Sepete ekle</span><strong id="hero-price"></strong></button>
       </div>
       <div class="hero-photo">
         <img id="hero-img" src="assets/69d0222c0dbc4f83db49c90a.webp" alt="Grand Rocher Cup" width="720" height="477" fetchpriority="high">
-        <button class="hero-item" type="button" id="hero-item"><span data-t="heroProduct">Fotoğraftaki tatlı</span><strong id="hero-name"></strong><span data-icon="arrow"></span></button>
+        <button class="hero-item" type="button" id="hero-item"><strong id="hero-name"></strong><span data-icon="arrow"></span></button>
       </div>
     </section>
 
     <section class="moods section" id="moods" aria-labelledby="mood-title">
       <div class="section-head">
-        <div><h2 id="mood-title" data-t="moodTitle">Bugün modun nasıl?</h2><p data-t="moodText">Bir ruh hali seç, sana uygun tatlıları ve içecekleri bul.</p></div>
+        <h2 id="mood-title" data-t="moodTitle">Bugün modun nasıl?</h2>
         <button class="clear-mood text-button" type="button" data-mood-choice="all" hidden data-t="clearMood">Seçimi kaldır</button>
       </div>
       <div id="mood-options" class="mood-options"></div>
@@ -51,7 +52,7 @@
 
     <section class="section menu-section" id="menu" aria-labelledby="menu-title">
       <div class="section-head menu-head">
-        <div><p class="eyebrow menu-kicker" id="menu-kicker" data-t="heroKicker">ÇİKOLATA EVİM</p><h2 id="menu-title" data-t="menuTitle">Kafe menüsü</h2></div>
+        <h2 id="menu-title" data-t="menuTitle">Kafe menüsü</h2>
         <div class="menu-actions">
           <label class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Menüde ara" aria-label="Menüde ara" autocomplete="off"></label>
           <button type="button" class="save-filter icon-button" id="save-filter" data-saved aria-pressed="false"><span data-icon="heart"></span><span class="sr-only" data-t="favorites">Favoriler</span></button>
@@ -74,8 +75,16 @@
       <a id="source" href="https://qr.finedinemenu.com/cikolata-evim-2/menu/69d0222b0dbc4f83db49c74f" target="_blank" rel="noopener"><span data-t="source">Orijinal QR menü</span><span data-icon="external"></span></a>
     </div>
   </footer>
-  <div class="floating-cart" id="floating-cart" hidden>
-    <button type="button" data-open-cart><span data-icon="bag"></span><span data-t="cart">Sepet</span><span class="count" data-count>0</span><strong id="float-total"></strong><span data-icon="arrow"></span></button>
+  <div class="bottom-bar">
+    <div class="floating-cart" id="floating-cart" hidden>
+      <button type="button" data-open-cart><span data-icon="bag"></span><span data-t="reviewCart">Sepeti gör</span><span class="count" data-count>0</span><strong id="float-total"></strong><span data-icon="arrow"></span></button>
+    </div>
+    <nav class="mobile-nav" aria-label="Menü">
+      <button type="button" data-dock="menu"><span data-icon="menu"></span><span data-t="menu">Menü</span></button>
+      <button type="button" data-dock="pair"><span data-icon="pair"></span><span data-t="pair">Eşleşmeler</span></button>
+      <button type="button" data-dock="saved"><span data-icon="heart"></span><span data-t="favorites">Favoriler</span></button>
+      <button type="button" data-dock="cart" data-open-cart><span data-icon="bag"></span><span data-t="cart">Sepet</span><span class="nav-count" data-count hidden>0</span></button>
+    </nav>
   </div>
   <dialog id="detail" aria-labelledby="detail-title"><div id="detail-content"></div></dialog>
   <dialog id="basket" class="basket" aria-labelledby="basket-title">
