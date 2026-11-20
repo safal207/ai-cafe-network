@@ -588,3 +588,16 @@ dialog::backdrop {background:#061735a6}
   .brand img {width:130px}
   .header-inner {gap:5px}
 }
+
+/* A checkout panel is still a branded customer touchpoint. */
+.basket .drawer-head {gap:10px}
+.basket .drawer-brand {
+  display:block;width:112px;height:auto;max-width:34%;margin-left:auto;
+  aspect-ratio:360 / 111;object-fit:contain;flex:none
+}
+@media(max-width:640px) {
+  .basket .drawer-brand {width:100px;max-width:32%}
+}
+@media(max-width:350px) {
+  .basket .drawer-brand {width:84px}
+}
