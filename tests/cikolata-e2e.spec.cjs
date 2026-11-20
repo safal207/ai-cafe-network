@@ -41,6 +41,12 @@ for (const { label, width, height } of dimensions) {
     await cartButton.click();
     await expect(page.locator('#basket')).toBeVisible();
     await expect(page.locator('#basket .cart-line')).toHaveCount(1);
+    await expect(page.locator('#basket .drawer-brand')).toBeVisible();
+    await page.locator('#basket [data-service="takeaway"]').click();
+    await expect(page.locator('#basket [data-service="takeaway"]')).toHaveAttribute('aria-pressed', 'true');
+    await page.locator('#basket [data-staff]').click();
+    await expect(page.locator('#staff-summary')).toBeVisible();
+    await expect(page.locator('#staff-summary')).toHaveValue(/Çikolata Evim.*Sipariş listesi/);
     await page.locator('#basket [data-close="basket"]').click();
 
     await page.locator('#lang').selectOption('ru');
