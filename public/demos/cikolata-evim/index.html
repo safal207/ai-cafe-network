@@ -3,13 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f5f8ff">
+  <meta name="theme-color" content="#fffaf5">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Çikolata Evim · Çikolata ve Kahve">
+  <meta property="og:description" content="Belçika çikolatalı tatlılar, waffle ve kahve. Fotoğraflarla keşfet.">
+  <meta property="og:image" content="https://safal207.github.io/ai-cafe-network/demos/cikolata-evim/assets/grand-rocher-editorial.webp">
   <meta name="description" content="Çikolata Evim'e hoş geldiniz. Belçika çikolatası, tatlılar ve kahve için küçük bir mola.">
   <title>Çikolata Evim · Çikolata ve Kahve</title>
   <link rel="icon" href="assets/brand.webp" type="image/webp">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=6">
   <script src="menu.js" defer></script>
-  <script src="app.js?v=3" defer></script>
+  <script src="app.js?v=5" defer></script>
 </head>
 <body>
   <a class="skip" href="#main" data-t="skip">İçeriğe geç</a>
@@ -34,6 +38,7 @@
     <section class="landing-hero" aria-labelledby="hero-title">
       <figure class="landing-photo">
         <img src="assets/grand-rocher-editorial.webp" alt="Grand Rocher Cup" width="1280" height="853" fetchpriority="high" decoding="async">
+        <span class="brand-stamp hero-brand-stamp" aria-hidden="true"><img src="assets/brand.webp" width="360" height="111" alt=""></span>
         <figcaption>Grand Rocher Cup</figcaption>
       </figure>
       <div class="landing-copy">
@@ -45,9 +50,22 @@
       </div>
     </section>
 
+    <section class="tasting-section section" id="tastes" aria-labelledby="tasting-title">
+      <div class="section-head tasting-head">
+        <div>
+          <p class="eyebrow" data-t="tastingKicker">TATLARIN HİKÂYESİ</p>
+          <h2 id="tasting-title" data-t="tastingTitle">Gözünle seç, keyfini çıkar.</h2>
+          <p class="section-lead" data-t="tastingText">Bir tatlıyla başla. Fotoğrafa dokun ve içindeki lezzetleri keşfet.</p>
+        </div>
+        <button type="button" class="text-button tasting-more" data-view-link="feed"><span data-t="tastingMore">Fotoğraflı menüyü aç</span><span aria-hidden="true">↗</span></button>
+      </div>
+      <div class="landing-stories" id="landing-stories" aria-label="Çikolata Evim"></div>
+    </section>
+
     <section class="visit section" id="visit" aria-labelledby="visit-title">
       <figure class="visit-photo">
         <img src="assets/cafe-interior.webp" width="1050" height="700" alt="Çikolata Evim" loading="lazy" decoding="async">
+        <span class="brand-stamp visit-brand-stamp" aria-hidden="true"><img src="assets/brand.webp" width="360" height="111" alt=""></span>
         <figcaption><a href="https://www.allesofis.com/cikolata-evim/" rel="noopener" target="_blank">Alles Ofis</a></figcaption>
       </figure>
       <div class="visit-copy">
@@ -68,11 +86,16 @@
 
     <div id="menu-page" hidden>
     <section class="moods section" id="moods" aria-labelledby="mood-title">
-      <div class="section-head">
-        <h2 id="mood-title" data-t="moodTitle">Bugün modun nasıl?</h2>
-        <button class="clear-mood text-button" type="button" data-mood-choice="all" hidden data-t="clearMood">Seçimi kaldır</button>
-      </div>
-      <div id="mood-options" class="mood-options"></div>
+      <details class="mood-disclosure" id="mood-disclosure">
+        <summary><span data-t="moodSummary">Moduna göre seç</span><span class="mood-summary-icon" aria-hidden="true">+</span></summary>
+        <div class="mood-inner">
+          <div class="section-head">
+            <h2 id="mood-title" data-t="moodTitle">Bugün modun nasıl?</h2>
+            <button class="clear-mood text-button" type="button" data-mood-choice="all" hidden data-t="clearMood">Seçimi kaldır</button>
+          </div>
+          <div id="mood-options" class="mood-options"></div>
+        </div>
+      </details>
     </section>
 
     <section class="section menu-section" id="menu" aria-labelledby="menu-title">
@@ -122,7 +145,7 @@
     <div class="share-body"><input id="share-link" class="share-link" readonly type="url" aria-label="Ürün bağlantısı"><p class="share-status" id="share-status" role="status"></p></div>
   </dialog>
   <dialog id="basket" class="basket" aria-labelledby="basket-title">
-    <header class="drawer-head"><h2 id="basket-title" data-t="cart">Sepet</h2><button type="button" class="icon-button" data-close="basket" aria-label="Kapat"><span data-icon="close"></span></button></header>
+    <header class="drawer-head"><h2 id="basket-title" data-t="cart">Sepet</h2><img class="drawer-brand" src="assets/brand.webp" width="360" height="111" alt="" aria-hidden="true"><button type="button" class="icon-button" data-close="basket" aria-label="Kapat"><span data-icon="close"></span></button></header>
     <div id="basket-content"></div>
   </dialog>
   <p class="toast" id="toast" role="status"></p>
